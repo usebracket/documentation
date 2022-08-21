@@ -1,0 +1,27 @@
+---
+title: "MongoDB"
+---
+
+<TipGood>Status: Live</TipGood>
+
+## Basics
+
+Our MongoDB integration is currently live. Users can connect whole collections with tools like Airtable and Notion. Changes in MongoDB are reflected in real time!
+
+## Allowed fields
+
+The following fields are currently accepted for Bracket's bidirectional syncing
+
+- Double
+- String
+- Boolean
+- Date
+- 32-bit integer
+- 64-bit integer
+- Decimal128
+- JSON objects
+- Lists & Arrays
+
+## Deletes
+
+When deleting a key in a MongoDB document (let's say you want to delete a `field1` field), users should set it as the value to `null` as opposed to deleting the key. This will make sure that Airtable receives that key deletion, because Bracket performs a `PATCH` rather than a destructive `PUT`.

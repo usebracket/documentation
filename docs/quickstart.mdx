@@ -1,0 +1,43 @@
+---
+title: 'Quick Start'
+description: 'How to start connecting your data through Bracket'
+---
+
+Bracket lets you connect popular data tools and backend databases for bidirectional or unidirectional syncs. In this guide, we'll talk through how to get your data tools connected in a few quick steps.
+
+Since we've been obsessed with developing the core product, a lot of our work with you happens over Slack or Discord right now. In the future, look out for a fully self-serve web app.
+
+## 1. Join private Slack group with Bracket
+
+To get started, you can either [schedule a meeting](https://calendly.com/ian-yanusko/discovery-call) with our team or email us at eng@usebracket.com requesting access. We will create a private Slack group with you and your team. If you prefer Discord, just indicate that in your email.
+
+## 2. Send schemas and connection materials
+
+Depending on the tools you would like to connect, Bracket needs certain information to set up the connection. See below for what materials are needed for each tool. It should take less than ten minutes to find these and requires no coding.
+
+Note that if Bracket is setting up any tools for you, you do not need to provide materials for that tool. For example, if we are setting up a MongoDB collection for you, you do not need to provide us a connection URI.
+
+| Tool                             | What we need                                                                                                                      |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| [Airtable](/connecting/airtable) | API key and copy of Airtable tabs with data deleted, leaving the schema                                                           |
+| [Notion](/connecting/notion)     | Make eng@usebracket.com admin of workspace                                                                                        |
+| SQL databases                    | Connection string URI                                                                                                             |
+| [MongoDB](/database/mongodb)     | Connection string URI with Bracket as added user, Wwitelisting IP address 0.0.0.0/0, and schema mapping (ideally a Mongoose file) |
+
+## 3. Notify us of any special requests
+
+By default, we will bidirectionally connect your full schema (if a 1:1 match between tools) or the intersection of your two schemas (if there are non-matching fields on either side) with 1-5 minute syncs. If you would like anything customized, let us know!
+
+### Examples of past customizations:
+
+- Making certain fields sync unidirectionally, effectively making them read-only
+- Filtering data such that only a portion of the data is shown in a certain tool
+- Changing sync frequency
+
+## 4. Onboard
+
+Once we have all required materials from you, we will build and test the connection using a test environment. Once we are ready to onboard you fully, we will have a 10-minute onboarding meeting to initiate syncing with your production data.
+
+During onboarding, we will establish the initial mapping between your two tools. To do this, we will need to seed one of those tools with the data from the other, then initiate syncing.
+
+We do not write anything to your tools until this onboarding.

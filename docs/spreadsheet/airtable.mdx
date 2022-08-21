@@ -1,0 +1,110 @@
+---
+title: "Airtable"
+---
+
+<TipGood>Status: Live</TipGood>
+
+## Basics
+
+Airtable is a highly functional spreadsheet tool that functions similarly to a relational database. In fact, many young companies use Airtable as their sole source of truth at first!
+
+With Bracket, you can sync any Airtable base with
+
+1. Any SQL database
+2. Any NoSQL database, and/or
+3. Notion
+
+We can sync whole tables or specific columns within those tables.
+
+## Supported and partially supported fields
+
+The following Airtable field types are currently supported:
+
+- Single line text
+- Long text
+- Date
+- Phone number
+- Email
+- Currency
+- Multi-select
+- Single select
+- Collaborator
+- Checkbox
+- Number
+- Last modified by
+- Created time
+- URL
+- Percent
+- Duration
+- Autonumber\*
+- Rollup\*
+- Count\*
+- Formula\*
+- Linked record\*\*
+- Lookup\*\*\*
+
+\*: Bracket can sync the data as a number or string, but full functionality with the paired tool is not guaranteed and syncing will only be unidirectional. For example, a lookup field in Airtable can sync to Postgres, but updates in that same field in Postgres will not sync back to Airtable.
+
+\*\*: support is in development.
+
+\*\*\*: support depends on the underlying field type. For example, if a lookup references text fields, Bracket can support the lookup, but if the lookup references attachment fields, Bracket cannot support it.
+
+## Unsupported fields
+
+The following Airtable fields are not yet supported:
+
+- Attachment
+- Button
+- Barcode
+- Rating
+
+## Dates and times
+
+We recommend formatting your date fields in Airtable with the following settings _before_ Bracket starts syncing:
+
+<Example>
+  <img class="rounded-md w-full" src="/img/spreadsheet-airtable-1.png" />
+</Example>
+
+<TipWarning>
+  If you turn on the "Use the same time zone (GMT) for all collaborators"
+  setting after syncing has already been turned on, then your dates will get
+  recalibrated to the timezone in which the user made the change.
+</TipWarning>
+
+## Supported sync configurations
+
+We know everybody has a different use case for Bracket, and we want to help you achieve it! To that end, we support a number of possible syncing configurations.
+
+| Property                                               | Support                                                                                                                                                                                                                                   |
+| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Number of Airtable tabs and number of linked databases | We can link any number of Airtable tabs to any number of database tables/collections. Many:1, 1:many, many:many, and 1:1 are all supported.                                                                                               |
+| Number of fields within an Airtable tab synced         | We can sync any full set or subset of fields within an Airtable tab to corresponding fields in the database(s).                                                                                                                           |
+| Bidirectional vs. unidirectional syncs                 | Of the synced fields, we can define each as unidirectional or bidirectional. That is, an Airtable field can solely read, solely write, or read **and** write. This helps teams establish implicit permissions over database write access. |
+| Filtering data to stay within Airtable row limits      | You can set logic such that Airtable is only reading and writing data within specific parameters, e.g. the last 7 days' worth of data from the linked database. This helps teams leverage Airtable without hitting row limits.            |
+
+## Schema changes
+
+There are several possible schema changes you can make in Airtable. Below, we cover whether these changes break syncing for the entire table and how to handle these changes with a Bracket-connected Airtable.
+
+| Type of change                                                                        | Will this break syncing? | What to do                                                                                                                                                                                                                         |
+| ------------------------------------------------------------------------------------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Adding field that does not need to be synced (i.e., an Airtable-only field)           | No                       | Nothing                                                                                                                                                                                                                            |
+| Deleting a field that is not synced                                                   | No                       | Nothing                                                                                                                                                                                                                            |
+| Changing the name or field type of a field that is not synced                         | No                       | Nothing                                                                                                                                                                                                                            |
+| Changing order of fields                                                              | No                       | Nothing (note that this will not change the order of the rows or documents in the linked database).                                                                                                                                |
+| Adding an option to a multi-select or single select field                             | No                       | Nothing - this new option will be added to the paired database when used for the first time.                                                                                                                                       |
+| Adding a field you would like to sync                                                 | No                       | The field will not sync until you let us know to start syncing it with the paired database. Ping us on Slack and we'll set it up right away!                                                                                       |
+| Changing name or case of existing synced field                                        | Yes                      | Notify the Bracket team via Slack. We will update the connection immediately. If a team member unknowingly makes a change that breaks syncing, we will notify you via Slack to confirm the new schema, then update the connection. |
+| Changing field type of existing synced field (e.g., single line text -> multi-select) | Yes                      | Same as above                                                                                                                                                                                                                      |
+| Deleting a synced field                                                               | Yes                      | Same as above                                                                                                                                                                                                                      |
+
+## Row changes
+
+When you change rows in a linked Airtable, certain changes happen in the paired database. Below we list out the default outcome of changes to rows in a synced Airtable tab. To customize any of these default outcomes, just tell us on Slack.
+
+| Type of change | Default outcome                                                                                                                                                                                                                                                                                                                         | Customizable? |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| Adding row     | 1. Creates new row in spreadsheet<br />2. Creates new row in SQL database<br />3. Creates new document in NoSQL database<br /><br />**Note**: the document is created as soon as a new record in Airtable is created, not when fields are populated. If you create a new empty row, it will generate an empty document in the database. | Yes           |
+| Editing row    | If edits are made in a synced field, then edit is pushed to the paired database. Otherwise, the edit only exists in Airtable.                                                                                                                                                                                                           | Yes           |
+| Deleting row   | This does not delete the equivalent row or document in the paired database.                                                                                                                                                                                                                                                             | Yes           |
