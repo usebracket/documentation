@@ -1,5 +1,46 @@
 ---
 title: 'Postgres'
+description: 'Follow these steps to set up your initial Postgres connection with Bracket'
 ---
 
-Coming soon! 🚧
+## Creating your connection URI
+
+1. Gather the following details for your Postgres entity:
+
+- username (see instructions below), password, host, port, database, schema and/or table name
+
+2. Create the connection URI with the following format.
+
+```shell Postgres Connection URI
+postgresql://[user[:password]@][host][:port][,...][/database][?param1=value1&...]
+```
+
+3. Upload the connection URI and table name to https://www.usebracket.com/onboarding
+
+## Creating a read only user on your database
+
+1. Create a new user and password
+
+```shell Postgres User Creation
+CREATE USER bracket WITH PASSWORD 'any_safe_password';
+```
+
+2. Allow this new user to connect to the database
+
+```shell Postgres Connection Access
+GRANT CONNECT ON DATABASE database_name TO bracket;
+```
+
+3. Allow Usage on the schema (typically 'public')
+
+```shell Postgres Connection Access
+GRANT USAGE ON SCHEMA schema_name TO bracket;
+```
+
+4. Allow read access on a specific table
+
+```shell Postgres Connection Access
+GRANT SELECT ON table_name TO bracket;
+```
+
+
