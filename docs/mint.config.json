@@ -69,17 +69,19 @@
     },
     {
       "group": "Database Integrations",
-      "pages": ["database/mongodb", "database/firebase", "database/postgres", "database/dynamodb"]
+      "pages": [
+        "database/mongodb",
+        "database/firebase",
+        "database/postgres",
+        "database/dynamodb"
+      ]
     },
     {
       "group": "Use cases",
       "pages": ["uses/sales-partnerships", "uses/growth", "uses/operations"]
     }
   ],
-  "footerSocials": [
-    {
-      "type": "website",
-      "url": "https://www.usebracket.com/"
-    }
-  ]
+  "footerSocials": {
+    "website": "https://www.usebracket.com"
+  }
 }
