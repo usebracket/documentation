@@ -86,8 +86,8 @@
   },
   "analytics": {
     "hotjar": {
-      "hjid": "INSERT_HJID",
-      "hjsv": "INSERT_HJSV"
+      "hjid": "3152040",
+      "hjsv": "6"
     }
   }
 }
