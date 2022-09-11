@@ -83,5 +83,11 @@
   ],
   "footerSocials": {
     "website": "https://www.usebracket.com"
+  },
+  "analytics": {
+    "hotjar": {
+      "hjid": "INSERT_HJID",
+      "hjsv": "INSERT_HJSV"
+    }
   }
 }
