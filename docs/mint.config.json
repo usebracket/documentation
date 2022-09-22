@@ -64,7 +64,7 @@
       "group": "Spreadsheet Integrations",
       "pages": [
         "spreadsheet/airtable",
-        "spreadsheet/google-sheets",
+        "spreadsheet/gsheets",
         "spreadsheet/notion"
       ]
     },
