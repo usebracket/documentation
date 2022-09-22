@@ -51,12 +51,13 @@
       "group": "Setup",
       "pages": [
         "connecting/airtable",
-        "connecting/notion",
-        "connecting/mongodb",
         "connecting/dynamodb",
-        "connecting/postgres",
+        "connecting/gsheets",
+        "connecting/firebase",
+        "connecting/mongodb",
         "connecting/mysql",
-        "connecting/firebase"
+        "connecting/notion",
+        "connecting/postgres"
       ]
     },
     {
