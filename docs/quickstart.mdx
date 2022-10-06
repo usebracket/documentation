@@ -1,43 +1,36 @@
 ---
 title: 'Quick Start'
-description: 'How to start connecting your data through Bracket'
+description: 'How to set up a connection with Bracket'
 ---
 
-Bracket lets you connect popular data tools and backend databases for bidirectional or unidirectional syncs. In this guide, we'll talk through how to get your data tools connected in a few quick steps.
+Bracket lets you connect popular tools and backend databases for two-way or one-way syncs. In this guide, we'll talk through how to get everything connected in a few quick steps.
 
-Since we've been obsessed with developing the core product, a lot of our work with you happens over Slack or Discord right now. In the future, look out for a fully self-serve web app.
+<Info>If you'd like to join a private Slack or Discord group with our team for support or questions, just ping us at founders@usebracket.com</Info>
 
-## 1. Join private Slack group with Bracket
+## 1. Create an account on our web app
 
-To get started, you can either [schedule a meeting](https://calendly.com/ian-yanusko/discovery-call) with our team or email us at eng@usebracket.com requesting access. We will create a private Slack group with you and your team. If you prefer Discord, just indicate that in your email.
+<Card title="Bracket Web App" icon={duotone("link")} href="app.usebracket.com">
+  Set up your sync here
+</Card>
 
-## 2. Send schemas and connection materials
+## 2. Enter connection details for each connection
 
-Depending on the tools you would like to connect, Bracket needs certain information to set up the connection. See below for what materials are needed for each tool. It should take less than ten minutes to find these and requires no coding.
+On the web app, you'll need to enter certain connection details to get syncs running. See below for a summary of what information you'll need.
 
-Note that if Bracket is setting up any tools for you, you do not need to provide materials for that tool. For example, if we are setting up a MongoDB collection for you, you do not need to provide us a connection URI.
+| Tool                                  | What you'll need                                                                                                                  |
+| --------------------------------      | --------------------------------------------------------------------------------------------------------------------------------- |
+| [Airtable](/connecting/airtable)      | API key and link to Airtable base                                                                                                 |
+| [Notion](/connecting/notion)          | Create integration token and add it to the table you want to sync                                                                 |
+| [Google Sheets](/connection/gsheets)  | Share Sheet with Bracket service account and get the Sheet ID                                                                     |
+| [Postgres](/connecting/postgres)      | Connection string URI                                                                                                             |
+| [MongoDB](/database/mongodb)          | Connection string URI with Bracket as added user and whitelisting IP address 0.0.0.0/0                                            |
 
-| Tool                             | What we need                                                                                                                      |
-| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| [Airtable](/connecting/airtable) | API key and copy of Airtable tabs with data deleted, leaving the schema                                                           |
-| [Notion](/connecting/notion)     | Make eng@usebracket.com admin of workspace                                                                                        |
-| SQL databases                    | Connection string URI                                                                                                             |
-| [MongoDB](/database/mongodb)     | Connection string URI with Bracket as added user, Wwitelisting IP address 0.0.0.0/0, and schema mapping (ideally a Mongoose file) |
+## 3. Make sure your tools are ready for syncs
 
-## 3. Notify us of any special requests
+There are two prerequisites for a successful sync:
+    1. Make sure your field names match each other identically across the two tools
+    2. Make sure at least one tool is empty of data
 
-By default, we will bidirectionally connect your full schema (if a 1:1 match between tools) or the intersection of your two schemas (if there are non-matching fields on either side) with 1-5 minute syncs. If you would like anything customized, let us know!
+## 4. Click "Save" and start syncing
 
-### Examples of past customizations:
-
-- Making certain fields sync unidirectionally, effectively making them read-only
-- Filtering data such that only a portion of the data is shown in a certain tool
-- Changing sync frequency
-
-## 4. Onboard
-
-Once we have all required materials from you, we will build and test the connection using a test environment. Once we are ready to onboard you fully, we will have a 10-minute onboarding meeting to initiate syncing with your production data.
-
-During onboarding, we will establish the initial mapping between your two tools. To do this, we will need to seed one of those tools with the data from the other, then initiate syncing.
-
-We do not write anything to your tools until this onboarding.
+<Note>If you need help setting up either side of the sync (e.g., you want to sync Airtable with Postgres but don't have Postgres set up yet), just ping us at eng@usebracket.com! We're happy to help with that setup.</Note>

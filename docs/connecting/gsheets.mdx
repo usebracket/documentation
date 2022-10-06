@@ -3,22 +3,35 @@ title: "Google Sheets"
 description: "Follow these steps to set up your initial Google Sheets connection with Bracket"
 ---
 
-## Connecting with a Service Account
+## Setting up your Google Sheet
 
-- Share your spreadsheet with the specific service account `bracket@central-run-344416.iam.gserviceaccount.com`.
+To sync Google Sheets using Bracket, there are two basic requirements:
+    1. The row headers must start at row 1. There can be no extra rows above the table.
+    2. The sheet must have a primary field column that contains unique values. This can be as simple as an integer, or more complex like a UUIDV4.
+    <Warning>These conditions must always be met in the Sheet for the sync to work!</Warning>
+    <Tip>Here's a helpful Sheets formula to generate more complex unique IDs: `=DEC2HEX(RANDBETWEEN(0, 4294967295), 8)`</Tip>
+
+
+## Connecting with the Bracket Service Account
+
+Share your spreadsheet with the Bracket Service Account by sharing access to this email address: bracket@central-run-344416.iam.gserviceaccount.com.
 
 <Example>
     <img class="rounded-md w-6/12" src="/img/gsheets-1.png" />
 </Example>
 
-- Send the spreadsheet share link
+## Setting up the sync on the web app
+
+1. Enter the spreadsheet ID from the URL (hint: it's the string after "/d/" and before the next "/" in the URL, as shown by the "XXXX" string below)
 
 ```shell Spresheet Link Example
 https://docs.google.com/spreadsheets/d/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/edit#gid=0
 ```
 
-- Collect and share the sheet name e.g. Sheet1
+2. Collect and share the sheet name, e.g. Sheet1
 
 <Example>
     <img class="rounded-md w-full" src="/img/gsheets-2.png" />
 </Example>
+
+3. Enter the name of the sheet's primary key field. 

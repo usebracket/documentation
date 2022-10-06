@@ -3,23 +3,24 @@ title: "MongoDB"
 description: "Follow these steps to set up your initial MongoDB connection with Bracket"
 ---
 
-## Adding Bracket as a user
+## OPTIONAL: Adding Bracket as a user
+<Note>Perform this step if you would like to give Bracket access through a dedicated account. Skip this step if you prefer to use an existing MongoDB account during setup.</Note>
 
-Go to `Database Access`
+1. Go to `Database Access`
 
 <Example>
   <img class="rounded-md h-32" src="/img/mongodb-1.png" />
 </Example>
 
-Click `Add New User`
+2. Click `Add New User`
 
 <Example>
   <img class="rounded-md w-full" src="/img/mongodb-2.png" />
 </Example>
 
-- Add a user with username `bracket` and an auto-generated password (blue box below). In the permissions section, select `Read and write to any database` in `Built-in roles` or define a custom role that allows read and write permission to the specific databases you want to connect with Bracket (red box below).
-  - If you assign a custom role for Bracket, at the minimum it must include read and write access for the specific collection that is being synced.
-- Copy the username and password, which we'll use in the next step.
+3. Add a user with username `bracket` and an auto-generated password (blue box below). In the permissions section, select `Read and write to any database` in `Built-in roles` or define a custom role that allows read and write permission to the specific databases you want to connect with Bracket (red box below).
+  - If you assign a custom role for Bracket, at the minimum it must include read and/or write access for the specific collection that is being synced, depending on the direction of your sync.
+4. Copy the username and password, which we'll use in the next step.
 
 <Example>
   <img class="rounded-md w-full" src="/img/mongodb-3.png" />
@@ -27,31 +28,31 @@ Click `Add New User`
 
 ## Getting connection string URI
 
-Go to the "Database Deployments" page in MongoDB by clicking "Database" on the left sidebar (see below).
+1. Go to the `Database Deployments` page in MongoDB by clicking `Database` on the left sidebar (see below).
 
 <Example>
   <img class="rounded-md h-32" src="/img/mongodb-6.png" />
 </Example>
 
-Next to the name of the cluster you would like to connect with Bracket, click "Connect".
+2. Next to the name of the cluster you would like to connect with Bracket, click `Connect`.
 
 <Example>
   <img class="rounded-md w-full" src="/img/mongodb-7.png" />
 </Example>
 
-Then click "Connect your application".
+3. Then click `Connect your application`.
 
 <Example>
   <img class="rounded-md w-full" src="/img/mongodb-8.png" />
 </Example>
 
-Copy the connection string provided, then replace `<username>` and `<password>` with the username and password created for Bracket in the previous step. It should have the same format as this:
+4. Copy the connection string provided, then replace `<username>` and `<password>` with the username and password created for Bracket in the previous step (or with the username and password for an existing MongoDB user). It should have the same format as this:
 
 ```shell MongoDB Connection URI
 mongodb+srv://<username>:<password>@cluster0.at2mo.mongodb.net/?retryWrites=true&w=majority
 ```
 
-Send Bracket the full URI in Slack or via our webapp at app.usebracket.com.
+Enter the full URI in the webapp at app.usebracket.com.
 
 ## Whitelisting 0.0.0.0/0 IP address
 
@@ -61,9 +62,9 @@ Navigate to "Network Access" on the lefthand sidebar.
   <img class="rounded-md h-32" src="/img/mongodb-9.png" />
 </Example>
 
-- Click "Add IP Address".
+1. Click "Add IP Address".
 
-- In the "Whitelist Entry" field, type in "0.0.0.0/0" The comment field is optional. Click "Confirm".
+2. In the "Whitelist Entry" field, type in "0.0.0.0/0" The comment field is optional. Click "Confirm".
 
 <Info>
   Note that whitelisting 0.0.0.0/0 as an IP address makes the database
