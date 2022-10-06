@@ -5,19 +5,26 @@ description: 'Follow these steps to set up your initial Postgres connection with
 
 ## Creating your connection URI
 
-1. Gather the following details for your Postgres entity:
+1. Gather the following details for a user on your Postgres database:
 
-- username (see instructions below), password, host, port, database, schema and/or table name
+    1. username
+    2. password
+    3. host
+    4. port
+    5. database
+    6. schema
+    7. table name
 
-2. Create the connection URI with the following format.
+<Tip>If you are starting with a full connection URI string, it should follow the format below:</Tip>
 
 ```shell Postgres Connection URI
 postgresql://[user[:password]@][host][:port][,...][/database][?param1=value1&...]
 ```
 
-3. Upload the connection URI and table name to https://www.usebracket.com/onboarding
+2. Enter the details above to the web app at app.usebracket.com
 
-## Creating a read only user on your database
+## OPTIONAL: Creating a read only user on your database
+### Perform this step if you would like to give Bracket access through a dedicated account. Skip this step if you prefer to use an existing Postgres account during setup.
 
 1. Create a new user and password
 
