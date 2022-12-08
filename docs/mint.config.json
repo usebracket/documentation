@@ -74,7 +74,9 @@
         "database/mongodb",
         "database/firebase",
         "database/postgres",
-        "database/dynamodb"
+        "database/dynamodb",
+        "database/snowflake",
+        "database/mysql"
       ]
     },
     {
