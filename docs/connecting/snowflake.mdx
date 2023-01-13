@@ -1,0 +1,44 @@
+---
+title: 'Snowflake'
+description: 'Follow these steps to set up your initial Snowflake connection with Bracket'
+---
+
+## Creating your connection URI
+
+1. Gather the following details for a user on your Snowflake warehouse:
+
+ 1. user
+ 2. account (see below)
+ 3. password
+ 4. warehouse
+ 5. database
+ 6. schema
+ 7. table name
+ 8. primary key
+
+<Tip>If you are starting with a full connection URI string, it should follow the format below:</Tip>
+
+```shell Snowflake Connection URI
+jdbc:snowflake://<account_identifier>.snowflakecomputing.com/?<connection_params>
+```
+
+2. Enter the details above to the web app at app.usebracket.com
+
+## Finding your account details
+<Note>Bracket does not need your locator.</Note>
+
+1. Log into your snowflake at https://www.snowflake.com/
+
+2. Click on the account information in the bottom left corner of the UI
+
+<Example>
+  <img class="rounded-md w-full" src="/img/snowflake-1.png" />
+</Example>
+
+
+3. Copy the account identifier as seen in this image
+
+<Example>
+  <img class="rounded-md w-full" src="/img/snowflake-2.png" />
+</Example>
+

@@ -57,7 +57,8 @@
         "connecting/mongodb",
         "connecting/mysql",
         "connecting/notion",
-        "connecting/postgres"
+        "connecting/postgres",
+        "connecting/snowflake"
       ]
     },
     {
