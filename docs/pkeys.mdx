@@ -1,5 +1,5 @@
 ---
-title: 'Primary keys'
+title: 'Primary Keys'
 description: 'How Bracket uniquely identifies records'
 ---
 
@@ -13,25 +13,3 @@ To support safe syncing, Bracket matches records based on their primary key. Bel
 | [Postgres](/connecting/postgres)      | Unique field created by user           | Yes, see guide
 | [MongoDB](/database/mongodb)          | MongoDB object ID                      | No
 | [Snowflake](/database/snowflake)      | Unique field created by user           | Yes, see guide
-
-
-## 4. Choose your sync direction
-
-Choose a one-way or two-way sync. If you'd like to customize the sync so that certain fields are one-way and others are two-way, just ping us. 
-
-## 5. Review the fields to be synced and choose sync frequency
-
-After clicking "Review," you'll be taken to the admin page for the newly created connection
-
-Before you initiate the sync, you should:
-1. Make sure the field names and intersection types are accurate
-    - `UNIQUE KEY` is just an identifier for that field pairing. It doesn't matter what format this is in.
-    - Verify that the field names for each data source have appropriate capitalization, spaces, etc.
-    - `INTERSECTION TYPE` is the most granular field type available between the two data source fields. For example, if you are syncing a `select` field in Airtable with a `string` field in Postgres, then choose `select` here.
-2. Update the sync frequency as needed. The default frequency is five minutes, and the fastest frequency is one minute.
-
-## 6. Initiate sync
-
-Toggle `Active` to begin the sync. Refresh the page and scroll to the bottom to verify that a sync job has been planned.
-
-<Note>If you need help setting up either side of the sync (e.g., you want to sync Airtable with Postgres but don't have Postgres set up yet), just ping us at eng@usebracket.com! We're happy to help with that setup.</Note>
