@@ -45,7 +45,7 @@
   "navigation": [
     {
       "group": "Introduction",
-      "pages": ["introduction", "quickstart"]
+      "pages": ["introduction", "quickstart", "pkeys"]
     },
     {
       "group": "Setup",

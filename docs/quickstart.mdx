@@ -11,8 +11,8 @@ Bracket lets you connect popular tools and backend databases for two-way or one-
 
 The prerequisites for a successful sync are:
 1. Both data sources exist and have at least one field
-2. Both data sources have a unique key
-3. One data source is empty of data
+2. Both data sources have a [unique key](/pkeys)
+3. The secondary data source is empty of data
 
 ## 2. Create an account on our web app
 
@@ -24,8 +24,8 @@ On the web app, you'll need to enter certain connection details to get syncs run
 
 | Tool                                  | What you'll need                                                                                                                  |
 | --------------------------------      | --------------------------------------------------------------------------------------------------------------------------------- |
-| [Airtable](/connecting/airtable)      | API key and link to Airtable base                                                                                                 |
-| [Notion](/connecting/notion)          | Create integration token and add it to the table you want to sync                                                                 |
+| [Airtable](/connecting/airtable)      | An existing Airtable base                                                                                                |
+| [Notion](/connecting/notion)          | An existing Notion database                                                                 |
 | [Google Sheets](/connecting/gsheets)  | Share Sheet with Bracket service account and get the Sheet ID                                                                     |
 | [Postgres](/connecting/postgres)      | Connection string URI                                                                                                             |
 | [MongoDB](/database/mongodb)          | Connection string URI with Bracket as added user and whitelisting IP address 0.0.0.0/0 _or_ Bracket's dedicated IP addresses      |
@@ -42,13 +42,17 @@ After clicking "Review," you'll be taken to the admin page for the newly created
 
 Before you initiate the sync, you should:
 1. Make sure the field names and intersection types are accurate
-    - `UNIQUE KEY` is just an identifier for that field pairing. It doesn't matter what format this is in.
     - Verify that the field names for each data source have appropriate capitalization, spaces, etc.
-    - `INTERSECTION TYPE` is the most granular field type available between the two data source fields. For example, if you are syncing a `select` field in Airtable with a `string` field in Postgres, then choose `select` here.
-2. Update the sync frequency as needed. The default frequency is five minutes, and the fastest frequency is one minute.
+    - Verify that `INTERSECTION TYPE` is accurate. You can figure out the appropriate intersection type [here](https://docs.google.com/spreadsheets/d/1J9_1I608ARf06TohXeauN9tA477pUxLOvfTHuIOFa-0/edit?usp=sharing)
+2. Update the sync frequency as needed. See the different sync frequency options by plan [here](https://www.usebracket.com/pricing)
+
+<Warning>Field names must be identical matches for each respective data source</Warning>
+
 
 ## 6. Initiate sync
 
 Toggle `Active` to begin the sync. Refresh the page and scroll to the bottom to verify that a sync job has been planned.
+
+You can also test the sync without writing data (before or during a sync) by clicking "Test run" on the Job History section. 
 
 <Note>If you need help setting up either side of the sync (e.g., you want to sync Airtable with Postgres but don't have Postgres set up yet), just ping us at eng@usebracket.com! We're happy to help with that setup.</Note>
