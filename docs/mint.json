@@ -50,7 +50,10 @@
     {
       "group": "Setup",
       "pages": [
-        "connecting/airtable/airtable_connecting",
+        {
+          "group": "Airtable",
+          "pages": ["airtable_connecting"]
+        }, 
         "connecting/dynamodb",
         "connecting/gsheets",
         "connecting/firebase",
