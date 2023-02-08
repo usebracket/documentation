@@ -1,53 +1,22 @@
 ---
-title: 'Postgres'
-description: 'Follow these steps to set up your initial Postgres connection with Bracket'
+title: 'Configuring your Postgres primary key'
+sidebarTitle: "Primary keys"
+description: "Follow these steps to properly set up your Postgres primary key"
 ---
 
-## Creating your connection URI
+## Summary
 
-1. Gather the following details for a user on your Postgres database:
+To maintain database integrity over time, we recommend that your Postgres table have an **independent** primary key - that is, your Postgres table should not take the primary key values from the opposing data source in the sync. 
 
-    1. username (often `postgres`)
-    2. password
-    3. host
-    4. port
-    5. database
-    6. schema
-    7. table name
+## How to set up your primary key
 
-<Tip>If you are starting with a full connection URI string, it should follow the format below:</Tip>
+Each Postgres table you sync with Bracket should have a primary key constraint, and the primary key should have a default value that is unique. We recommend using UUIDV4 primary keys, which you can automatically generate using the command below in your `create table` SQL statement.
 
-```shell Postgres Connection URI
-postgresql://[user[:password]@][host][:port][,...][/database][?param1=value1&...]
+```SQL
+CREATE TABLE IF NOT EXISTS public.table
+    (pkey text COLLATE pg_catalog."default" NOT NULL DEFAULT uuid_generate_v4())
 ```
+This ensures that all newly added records, whether inserted directly to Postgres or synced from a paired data source, will adopt primary keys with uniform formatting and unique values. 
 
-2. Enter the details above to the web app at app.usebracket.com
-
-## OPTIONAL: Creating a read only user on your database
-<Note>Perform this step if you would like to give Bracket access through a dedicated account. Skip this step if you prefer to use an existing Postgres account during setup.</Note>
-
-1. Create a new user and password
-
-```shell Postgres User Creation
-CREATE USER bracket WITH PASSWORD 'any_safe_password';
-```
-
-2. Allow this new user to connect to the database
-
-```shell Postgres Connection Access
-GRANT CONNECT ON DATABASE database_name TO bracket;
-```
-
-3. Allow Usage on the schema (typically 'public')
-
-```shell Postgres Connection Access
-GRANT USAGE ON SCHEMA schema_name TO bracket;
-```
-
-4. Allow read access on a specific table
-
-```shell Postgres Connection Access
-GRANT SELECT ON table_name TO bracket;
-```
-
+In the field mapping, you are able to sync the primary key to a field in the opposing data source for reference, but any edits made to the primary key in the opposing source will not sync back to Postgres.
 
