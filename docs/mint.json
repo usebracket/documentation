@@ -54,14 +54,17 @@
           "group": "Airtable",
           "pages": ["connecting/airtable_connecting"]
         }, 
-        "connecting/dynamodb",
-        "connecting/gsheets",
+        {
+          "group": "Google Sheets",
+          "pages": ["connecting/gsheets_connecting", "connecting/gsheets_pkey"]
+        },
+        "connecting/notion",
         "connecting/firebase",
         "connecting/mongodb",
         "connecting/mysql",
-        "connecting/notion",
         "connecting/postgres",
-        "connecting/snowflake"
+        "connecting/snowflake",
+        "connecting/dynamodb"
       ]
     },
     {
