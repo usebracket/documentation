@@ -8,6 +8,8 @@ description: "Follow these steps to properly set up your Google Sheet primary ke
 
 To sync Google Sheets using Bracket, each sheet must have a primary field column that contains unique values. This can be as simple as an integer, or more complex like a UUIDV4.
 
+<Warning>Empty values count as primary key values, which can lead to data mixing in two-way syncs! Be careful to ensure that the primary key field is never empty for any syncs that read from Google Sheets</Warning>
+
 ## Requirements based on the sync type
 
 For one-way syncs that write to Google Sheets, the primary key can take the values of the primary key from the primary data source. In this case, you only need to input the field name into the first row of the Sheet.
@@ -17,5 +19,3 @@ For one-way syncs that read from Google Sheets, the primary key for any populate
 For two-way syncs, the primary key must be a formula that outputs a unique, static value. For example, use `=CONCATENATE` to combine values from each of the Sheet's columns to create unique IDs. 
 
 <Warning>Beware of using formulas that can change over time for your primary key. For example, `=RAND` and `=RANDBETWEEN` functions: because the output of these formulas change, the primary key will not be static.</Warning>
-
-<Warning>Empty values count as primary key values, which can lead to data mixing in two-way syncs! Be careful to ensure that the primary key field is never empty for any syncs that read from Google Sheets</Warning>
