@@ -48,7 +48,7 @@
       "pages": ["introduction", "quickstart", "pkeys"]
     },
     {
-      "group": "Setup",
+      "group": "Integrations",
       "pages": [
         {
           "group": "Airtable",
@@ -58,11 +58,14 @@
           "group": "Google Sheets",
           "pages": ["connecting/gsheets_connecting", "connecting/gsheets_pkey"]
         },
+        {
+          "group": "Postgres",
+          "pages": ["connecting/postgres_connecting", "connecting/postgres_pkey"]
+        },
         "connecting/notion",
         "connecting/firebase",
         "connecting/mongodb",
         "connecting/mysql",
-        "connecting/postgres",
         "connecting/snowflake",
         "connecting/dynamodb"
       ]
