@@ -9,9 +9,7 @@ description: "Follow these steps to sync an existing Google Sheet"
 To sync Google Sheets using Bracket, there are three basic requirements:
     1. The field names must start at row 1. There can be no extra rows above the table.
     2. The field names must be unique across the table, even among fields that are not syncing.
-    3. The sheet must have a primary field column that contains unique values. This can be as simple as an integer, or more complex like a UUIDV4.
-    <Warning>These conditions must always be met in the Sheet for the sync to work!</Warning>
-    <Tip>Here's a helpful Sheets formula to generate more complex unique IDs: `=DEC2HEX(RANDBETWEEN(0, 4294967295), 8)`</Tip>
+    3. The sheet must have a [primary field](/connecting/gsheets_pkey) column that contains unique values.
 
 
 ## Connecting with the Bracket Service Account
