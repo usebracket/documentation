@@ -1,0 +1,12 @@
+---
+title: "MongoDB primary keys"
+sidebarTitle: "Primary keys"
+description: "How Bracket treats MongoDB primary keys"
+---
+
+## Summary
+
+Bracket uses MongoDB ObjectId values to uniquely map each document to the opposing data source. The user does not need to do any prep work to configure primary keys. 
+
+<Tip>If you would like to sync the MongoDB ObjectId to a field in the opposing data sources, just add the `_id` field to the field mapping. The `_id` field will be read-only in the opposing source.</Tip>
+

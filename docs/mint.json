@@ -70,10 +70,16 @@
           "group": "Snowflake",
           "pages": ["connecting/snowflake_connecting", "connecting/snowflake_pkey"]
         },
-        "connecting/firebase",
-        "connecting/mongodb",
-        "connecting/mysql",
-        "connecting/dynamodb"
+        {
+          "group": "MongoDB",
+          "pages": ["connecting/mongodb_connecting", "connecting/mongodb_pkey"]
+        },
+        {
+          "group": "Firebase",
+          "pages": ["connecting/firebase_connecting", "connecting/firebase_pkey"]
+        },
+        "connecting/dynamodb",
+        "connecting/mysql"
       ]
     },
     {
