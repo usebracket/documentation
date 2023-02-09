@@ -1,0 +1,23 @@
+---
+title: 'Field mapping and field types'
+description: 'How to map fields in a Bracket sync'
+---
+
+## The basics
+
+Every sync you set up with Bracket will have a field mapping between the data sources. It's important to verify that the field mapping is accurate to make sure your sync works properly. 
+
+## How to review the field mapping for a new sync
+
+1. Submit a [new connection](https://app.usebracket.com/) or navigate to an [existing connection](https://app.usebracket.com/connections)
+2. On the connection dashboard, scroll down to the "Fields" section. Verify that the field names for both your primary and secondary sources are accurate, and delete any fields that you do not want to sync.
+
+<Note>By default, Bracket will list all fields from your primary data source for every new sync, and assume the secondary source field names are identical. If you have a different naming convention for your secondary source, you must update the field names in the mapping.</Note>
+
+3. Verify that the `Intersection Type` for each field is accurate. `Intersection Type` is Bracket's bridge between field types from two different data sources. You can see a mapping of all supported field types and their respective `Intersection Type` values at the button below. 
+
+<Card title="Bracket Intersection Type Mapping" href="https://docs.google.com/spreadsheets/d/1J9_1I608ARf06TohXeauN9tA477pUxLOvfTHuIOFa-0/edit?usp=sharing" icon={duotone("link")}>See all supported field types and Intersection Types here.</Card>
+
+<Warning>Similar to field names, Bracket interpolates the `Intersection Type` based on the primary data source's fields. Depending on your secondary source, you may need to adjust the `Intersection Type`.</Warning>
+
+4. After any changes, click "Update mapping" to save your changes. 

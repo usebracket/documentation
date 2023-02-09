@@ -45,7 +45,7 @@
   "navigation": [
     {
       "group": "Introduction",
-      "pages": ["introduction", "quickstart", "pkeys"]
+      "pages": ["introduction", "quickstart", "field_mapping", "pkeys"]
     },
     {
       "group": "Integrations",
