@@ -52,13 +52,16 @@
       "pages": [
         {
           "group": "Airtable",
-          "pages": ["connecting/airtable_connecting"]
+          "pages": ["connecting/airtable_connecting", "connecting/airtable_pkey"]
         }, 
         {
           "group": "Google Sheets",
           "pages": ["connecting/gsheets_connecting", "connecting/gsheets_pkey"]
         },
-        "connecting/notion",
+        {
+          "group": "Notion",
+          "pages": ["connecting/notion_connecting", "connecting/notion_pkey"]
+        },
         {
           "group": "Postgres",
           "pages": ["connecting/postgres_connecting", "connecting/postgres_pkey"]
