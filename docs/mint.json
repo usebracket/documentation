@@ -58,35 +58,19 @@
           "group": "Google Sheets",
           "pages": ["connecting/gsheets_connecting", "connecting/gsheets_pkey"]
         },
+        "connecting/notion",
         {
           "group": "Postgres",
           "pages": ["connecting/postgres_connecting", "connecting/postgres_pkey"]
         },
-        "connecting/notion",
+        {
+          "group": "Snowflake",
+          "pages": ["connecting/snowflake_connecting", "connecting/snowflake_pkey"]
+        },
         "connecting/firebase",
         "connecting/mongodb",
         "connecting/mysql",
-        "connecting/snowflake",
         "connecting/dynamodb"
-      ]
-    },
-    {
-      "group": "Spreadsheet Integrations",
-      "pages": [
-        "spreadsheet/airtable",
-        "spreadsheet/gsheets",
-        "spreadsheet/notion"
-      ]
-    },
-    {
-      "group": "Database Integrations",
-      "pages": [
-        "database/mongodb",
-        "database/firebase",
-        "database/postgres",
-        "database/dynamodb",
-        "database/snowflake",
-        "database/mysql"
       ]
     },
     {

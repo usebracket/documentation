@@ -1,0 +1,12 @@
+---
+title: "Airtable primary keys"
+sidebarTitle: "Primary keys"
+description: "How Bracket pulls "
+---
+
+## Summary
+
+Bracket uses Airtable record IDs provided through the Airtable API to uniquely map each record to the opposing data source. The user does not need to do any prep work to configure primary keys. 
+
+<Tip>If you would like to sync the Airtable record ID to a field in the opposing data sources, just add a formula field in your Airtable with the formula `=RECORD_ID()`, and add the field to the field mapping on the Bracket webapp.</Tip>
+

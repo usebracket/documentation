@@ -1,0 +1,23 @@
+---
+title: "Configuring your Snowflake primary key"
+sidebarTitle: "Primary keys"
+description: "Follow these steps to properly set up your Snowflake primary key"
+---
+
+## Summary
+
+To enable syncing with Bracket, make sure your Snowflake table has a primary key constraint. 
+
+## How to set up your primary key
+
+Each Snowflake table you sync with Bracket should have a primary key constraint. To do this, you can add this constraint when creating the table in Snowflake:
+
+```DDL
+CREATE TABLE table
+    (pkey INT NOT NULL UNIQUE,
+    CONSTRAINT table_pk PRIMARY KEY (pkey))
+```
+This ensures that all newly added records, whether inserted directly to Snowflake or synced from a paired data source, will adopt primary keys with uniform formatting and unique values. 
+
+In the field mapping, you are able to sync the primary key to a field in the opposing data source for reference, but any edits made to the primary key in the opposing source will not sync back to Snowflake.
+
