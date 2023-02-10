@@ -1,0 +1,28 @@
+---
+title: 'Deletes'
+description: 'How Bracket handles deleted records'
+---
+
+## Summary
+
+Currently, Bracket supports delete syncs for specific data source integrations. In the table below, you can see which sources are supported.
+
+<Note>When we say "Deletes supported," we mean that deletes can be _made to_ the source when a delete is read from the opposing source.</Note>
+
+
+| Data source                                  | Deletes supported?                                                                                                                  |
+| --------------------------------      | --------------------------------------------------------------------------------------------------------------------------------- |
+| [Airtable](/connecting/airtable_connecting)      | No                                                                                              |
+| [Notion](/connecting/notion_connecting)          | No                                                                 |
+| [Google Sheets](/connecting/gsheets_connecting)  | No                                                                     |
+| [Postgres](/connecting/postgres_connecting)      | Yes                                                                                                             |
+| [MongoDB](/database/mongodb_connecting)          | In beta      |
+| [Snowflake](/database/snowflake_connecting)      | No                                                            |
+| [Firebase](/database/firebase_connecting)      | No                                                            |
+
+
+## 4. What if I delete records, and deletes are not supported?
+
+If you delete records in one source, and deletes are not supported for the opposing source, then nothing will happen to the paired record in the opposing source. Essentially, the paired record becomes orphaned and can safely be deleted. 
+
+<Tip>If you delete a record by mistake, and you would like it to enter back into the sync, we recommend copying its contents, deleting its paired record in the opposing source, then inserting it fresh into either source to ensure no data duplication.</Tip>

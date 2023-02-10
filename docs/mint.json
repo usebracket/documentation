@@ -45,7 +45,7 @@
   "navigation": [
     {
       "group": "Introduction",
-      "pages": ["introduction", "quickstart", "field_mapping", "pkeys"]
+      "pages": ["introduction", "quickstart", "field_mapping", "pkeys", "deletes"]
     },
     {
       "group": "Integrations",
@@ -78,7 +78,10 @@
           "group": "Firebase",
           "pages": ["connecting/firebase_connecting", "connecting/firebase_pkey"]
         },
-        "connecting/dynamodb",
+        {
+          "group": "DynamoDB",
+          "pages": ["connecting/dynamodb_connecting"]
+        },
         "connecting/mysql"
       ]
     },
