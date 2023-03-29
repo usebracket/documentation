@@ -63,26 +63,25 @@
           "pages": ["connecting/notion_connecting", "connecting/notion_pkey"]
         },
         {
-          "group": "Postgres",
-          "pages": ["connecting/postgres_connecting", "connecting/postgres_pkey"]
+          "group": "DynamoDB",
+          "pages": ["connecting/dynamodb_connecting"]
         },
         {
-          "group": "Snowflake",
-          "pages": ["connecting/snowflake_connecting", "connecting/snowflake_pkey"]
+          "group": "Firestore",
+          "pages": ["connecting/firebase_connecting", "connecting/firebase_pkey"]
         },
         {
           "group": "MongoDB",
           "pages": ["connecting/mongodb_connecting", "connecting/mongodb_pkey"]
         },
         {
-          "group": "Firebase",
-          "pages": ["connecting/firebase_connecting", "connecting/firebase_pkey"]
+          "group": "Postgres",
+          "pages": ["connecting/postgres_connecting", "connecting/postgres_pkey"]
         },
         {
-          "group": "DynamoDB",
-          "pages": ["connecting/dynamodb_connecting"]
-        },
-        "connecting/mysql"
+          "group": "Snowflake",
+          "pages": ["connecting/snowflake_connecting", "connecting/snowflake_pkey"]
+        }
       ]
     },
     {
