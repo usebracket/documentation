@@ -9,28 +9,15 @@ description: "Follow these steps to sync an existing Google Sheet"
 To sync Google Sheets using Bracket, there are three basic requirements:
     1. The field names must start at row 1. There can be no extra rows above the table.
     2. The field names must be unique across the table, even among fields that are not syncing.
-    3. The sheet must have a [primary field](/connecting/gsheets_pkey) column that contains unique values.
+    3. The sheet must have a [primary key](/connecting/gsheets_pkey) column that contains unique values.
 
 
-## Connecting with the Bracket Service Account
+## Setting up your sync
 
-Share your spreadsheet with the Bracket Service Account by sharing access to this email address: eng@usebracket.com.
+1. On the "New Connection" page, click "Connect new spreadsheets". Enable Bracket permissions on the Google oauth page.
 
-<Note>Note that Bracket will generate a unique Google Service Account for every sheet you connect. Generating an account can take a few minutes and is necessary to begin your sync.</Note>
+2. Back on the Bracket web app, select the spreadsheet name and sheet title.
 
+3. Enter the name of the Google Sheet [primary key](/connecting/gsheets_pkey). This field will uniquely identify rows in your sheet, and the values in this field should not be changed over time. 
 
-## Setting up the sync on the web app
-
-1. Enter the spreadsheet ID from the URL (hint: it's the string after "/d/" and before the next "/" in the URL, as shown by the "XXXX" string below)
-
-```shell Spresheet Link Example
-https://docs.google.com/spreadsheets/d/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/edit#gid=0
-```
-
-2. Collect and share the sheet name, e.g. Sheet1
-
-<Example>
-    <img class="rounded-md w-full" src="/img/gsheets-2.png" />
-</Example>
-
-3. Enter the name of the sheet's primary key field. 
+<Info>Bracket also supports syncs using dedicated Google service accounts. Ping us at eng@usebracket.com if you prefer to connect using this method.</Info>
