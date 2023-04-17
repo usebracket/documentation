@@ -1,10 +1,18 @@
 ---
-title: 'Connecting Firebase'
+title: 'Connecting Firestore'
 sidebarTitle: "Connecting"
 description: 'Follow these steps to sync an existing Firebase Cloud Firestore collection'
 ---
 
-## Generating Private Keys for a Service Account
+## Getting your Firestore project ID
+
+There are three different ways to get your Firestore project ID:
+
+1. **Using the Firebase console**: Click settings Project settings. The project ID is displayed in the top pane.
+2. Using the Firebase CLI: Run `firebase projects:list`. The project ID is displayed along with all the Firebase projects associated with your account.
+3. Using the Firebase Management REST API: Call `projects.list`. The response body contains the project ID in the `FirebaseProject` object.
+
+## Generating private keys for a service account
 
 1. Navigate to your project's console
 
@@ -16,8 +24,31 @@ description: 'Follow these steps to sync an existing Firebase Cloud Firestore co
 
 3. Click `Service accounts`
 
-4. Generate a new private key by clicking on `Generate new private key` and share the newly generated JSON file with Bracket
+4. Generate a new private key by clicking on `Generate new private key` and open the newly-created JSON
 
 <Example>
   <img class="rounded-md w-full" src="/img/firebase-2.png" />
 </Example>
+
+<Tip>The private key should begin with `-----BEGIN PRIVATE KEY-----` and end with `\\n-----END PRIVATE KEY-----\\n`</Tip>
+
+## Getting the client email for a service account
+
+The JSON that you created by generating a private key (above) will include a `client_email` field. Paste that in the Bracket web app. 
+
+**This is not a personal email address**
+
+## Getting the collection path
+
+In Firestore, data is organized in an alternating hierarchy of `collection/document/collection/document`. You can read about this hierarchy [here](https://firebase.google.com/docs/firestore/data-model#hierarchical-data).
+
+This means that a collection path should always have an odd number of elements. In the example below, `mycoll` and `mycoll/mydoc/mysubcoll` are both valid collection paths.
+
+<Example>
+  <img class="rounded-md w-full" src="/img/firebase-collection_path_example.png" />
+</Example>
+
+## Collection groups
+
+Firestore collection groups allow you to run queries over multiple related collections at once (you can read more [here](https://firebase.blog/posts/2019/06/understanding-collection-group-queries)). If the collection path refers to collection group, then check this box. 
+
