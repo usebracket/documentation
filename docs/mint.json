@@ -33,7 +33,13 @@
       "name": "Use Cases",
       "icon": "rocket-launch",
       "color": "#eab208",
-      "url": "uses"
+      "url": "uses/startups"
+    },
+    {
+      "name": "Troubleshooting",
+      "icon": "fa-duotone fa-bug",
+      "color": "#97D8C4",
+      "url": "troubleshooting"
     },
     {
       "name": "Contact Us",
