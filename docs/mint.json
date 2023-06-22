@@ -89,11 +89,11 @@
       "pages": [
         {
           "group": "Startups",
-          "pages": ["uses/startups"]
+          "pages": ["uses/startup_sharedata","uses/startup_godview"]
         }, 
         {
           "group": "Customer Support",
-          "pages": ["uses/cs_sla","uses/cs_refunds","uses/cs_cs360"]
+          "pages": ["uses/cs_featureflag","uses/cs_onboarding","uses/cs_sla","uses/cs_refunds","uses/cs_cs360"]
         }
       ]
     }
