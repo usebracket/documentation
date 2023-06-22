@@ -89,7 +89,7 @@
       "pages": [
         {
           "group": "Startups",
-          "pages": ["uses/startup_sharedata","uses/startup_godview"]
+          "pages": ["uses/startup_sharedata","uses/startup_godview","uses/startup_waitlist"]
         }, 
         {
           "group": "Customer Support",
