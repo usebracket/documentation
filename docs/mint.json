@@ -86,7 +86,16 @@
     },
     {
       "group": "Use cases",
-      "pages": ["uses/startups"]
+      "pages": [
+        {
+          "group": "Startups",
+          "pages": ["uses/startups"]
+        }, 
+        {
+          "group": "Customer Support",
+          "pages": ["uses/customer_support"]
+        }
+      ]
     }
   ],
   "footerSocials": {
