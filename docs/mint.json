@@ -93,7 +93,7 @@
         }, 
         {
           "group": "Customer Support",
-          "pages": ["uses/customer_support"]
+          "pages": ["uses/cs_cust_alert","uses/cs_sla","uses/cs_refunds","uses/cs_cs360"]
         }
       ]
     }
