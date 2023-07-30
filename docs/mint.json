@@ -90,7 +90,16 @@
     },
     {
       "group": "Use cases",
-      "pages": ["uses/startups"]
+      "pages": [
+        {
+          "group": "Startups",
+          "pages": ["uses/startup_sharedata","uses/startup_godview","uses/startup_waitlist"]
+        }, 
+        {
+          "group": "Customer Support",
+          "pages": ["uses/cs_featureflag","uses/cs_onboarding","uses/cs_sla","uses/cs_refunds","uses/cs_cs360"]
+        }
+      ]
     }
   ],
   "footerSocials": {
