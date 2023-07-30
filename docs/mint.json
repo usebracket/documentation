@@ -81,6 +81,10 @@
         {
           "group": "Snowflake",
           "pages": ["connecting/snowflake_connecting", "connecting/snowflake_pkey"]
+        },
+        {
+          "group": "Salesforce",
+          "pages": ["connecting/salesforce_connecting"]
         }
       ]
     },
