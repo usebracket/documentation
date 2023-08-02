@@ -1,6 +1,6 @@
 ---
 title: 'Postgres <> Airtable Relations Guide'
-sidebarTitle: "Postgres <> Airtable"
+sidebarTitle: 'Postgres <> Airtable relations'
 description: 'How to maintain record relationships between Postgres and Airtable'
 ---
 
@@ -33,6 +33,8 @@ To maintain relations between Airtable and Postgres, there are two basic require
 2. Children tables must have foreign key constraints on the linked record field, which will reference the Airtable record ID of the parent table
 
 <Tip>To create a record ID field in Airtable, just add a formula field with the formula `=RECORD_ID()`</Tip>
+
+## Step-by-step example
 
 Going back to the `customers` and `reservations` example, here's a step-by-step guide: 
 
