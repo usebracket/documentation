@@ -45,7 +45,7 @@
   "navigation": [
     {
       "group": "Introduction",
-      "pages": ["introduction", "quickstart", "field_mapping", "pkeys", "deletes", "relations_airtable_postgres"]
+      "pages": ["introduction", "quickstart", "field_mapping", "pkeys", "foreign_keys", "deletes"]
     },
     {
       "group": "Integrations",
