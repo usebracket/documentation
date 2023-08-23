@@ -9,37 +9,3 @@ description: 'How to maintain record relationships between Postgres and Airtable
 The ability to link records across tables is one of the key features of both Postgres and Airtable. In this guide, we walk through how to maintain record relations between the two with a Bracket sync. 
 
 <Note>Note that Bracket currently only supports 1:1 and 1:many relations in a Postgres <> Airtable sync, so for the purposes of this guide, we will leave out many-to-many relations</Note>
-
-
-## How does Postgres handle relations?
-
-In Postgres, you define relations between tables using foreign keys. A foreign key is simply a field that contains the primary key of another table. 
-
-For example, let's say you run a rental car service, and you have two tables: `customers` and `reservations`. In this case, each customer can make many reservations over time, but each reservation only belongs to one customer. This is a **one-to-many** relationship. In Postgres, both tables would have primary key fields, but `reservations` would also have a foreign key column that holds values from the `customers` primary key. 
-
-In this case, we call records from `customers` the "parent record," and records from `reservations` the "children records."
-
-## How does Airtable handle relations?
-
-In Airtable, you define relations between tables in a base using linked record fields. When linking records in Airtable, you create a two-way relationship between the records in each table, allowing you to add lookup and rollup fields that reference the linked record. 
-
-However, unlike Postgres, where relations are most commonly 1:many or 1:1 between two tables, in Airtable it's common to find 1:many, 1:1, _and_ many:many relations between tables. **Right now, Bracket only supports 1:1 and 1:many relations between Airtable and Postgres.**
-
-## How do I maintain my Airtable relations in Postgres?
-
-To maintain relations between Airtable and Postgres, there are two basic requirements:
-
-1. Parent tables must include the Airtable record ID as a synced field, and this field must have a `unique` constraint enforced in Postgres.
-2. Children tables must have foreign key constraints on the linked record field, which will reference the Airtable record ID of the parent table
-
-<Tip>To create a record ID field in Airtable, just add a formula field with the formula `=RECORD_ID()`</Tip>
-
-## Step-by-step example
-
-Going back to the `customers` and `reservations` example, here's a step-by-step guide: 
-
-1. Add a field with the Airtable record ID to the `customers`, and make sure that field syncs to Postgres. 
-2. In Postgres, enforce a unique constraint on this record ID field for the `customers` table. 
-3. Sync your Airtable data to Postgres for the `customers` table.
-4. In Postgres, in the `reservations` table, add a foreign key constraint on the linked record field in Airtable that references `customers`.
-5. Sync your Airtable data to Postgres for the `reservations` table.
