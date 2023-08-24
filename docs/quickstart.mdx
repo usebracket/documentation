@@ -10,7 +10,7 @@ Bracket lets you connect popular tools and backend databases for two-way or one-
 ## 1. Prepare your data sources for the sync
 
 The prerequisites for a successful sync are:
-1. Both data sources exist and have at least one field
+1. Both data sources exist (i.e., Bracket does not host on your behalf)
 2. Both data sources have a [unique key](/pkeys)
 3. The secondary data source is empty of data
 
@@ -30,29 +30,40 @@ On the web app, you'll need to enter certain connection details to get syncs run
 | [Postgres](/connecting/postgres_connecting)      | Connection string URI                                                                                                             |
 | [MongoDB](/database/mongodb_connecting)          | Connection string URI with Bracket as added user and whitelisting IP address 0.0.0.0/0 _or_ Bracket's dedicated IP addresses      |
 | [Snowflake](/database/snowflake_connecting)      | Login credentials and details about the warehouse / table to be synced                                                            |
+| [Salesforce](/database/salesforce_connecting)    | Valid Salesforce account                                                                                                          |
 
+<Example>
+  <img class="rounded-md w-full" src="/img/onboarding_choose_primary_sources.gif" />
+</Example>
 
-## 4. Choose your sync direction
+## 4. Review the fields to be synced and choose sync direction
 
-Choose a one-way or two-way sync. If you'd like to customize the sync so that certain fields are one-way and others are two-way, just ping us. 
+On this page, you can remove any fields that you do not want synced. While Bracket auto-maps fields based on field names, you can also adjust the mapping as needed. 
 
-## 5. Review the fields to be synced and choose sync frequency
+<Example>
+  <img class="rounded-md w-full" src="/img/onboarding_field_mapping.gif" />
+</Example>
 
-After clicking "Review," you'll be taken to the admin page for the newly created connection
+## 5. Name your sync and choose sync frequency.
 
-Before you initiate the sync, you should:
-1. Make sure the field names and intersection types are accurate
-    - Verify that the field names for each data source have appropriate capitalization, spaces, etc.
-    - Verify that `INTERSECTION TYPE` is accurate. You can figure out the appropriate intersection type [here](https://docs.google.com/spreadsheets/d/1J9_1I608ARf06TohXeauN9tA477pUxLOvfTHuIOFa-0/edit?usp=sharing)
-2. Update the sync frequency as needed. See the different sync frequency options by plan [here](https://www.usebracket.com/pricing)
+<Example>
+  <img class="rounded-md w-full" src="/img/onboarding_name_sync.gif" />
+</Example>
 
-<Warning>Field names must be identical matches for each respective data source</Warning>
+If you are using the [legacy app](https://legacy.app.usebracket.com/) before initiating the sync, you should make sure the field names and intersection types are accurate:
+1. Verify that the field names for each data source have appropriate capitalization, spaces, etc. On the legacy app, field names are case-sensitive.
+2. Verify that `INTERSECTION TYPE` is accurate. You can figure out the appropriate intersection type [here](https://docs.google.com/spreadsheets/d/1J9_1I608ARf06TohXeauN9tA477pUxLOvfTHuIOFa-0/edit?usp=sharing)
 
+## 6. Test and initiate sync
 
-## 6. Initiate sync
+To make sure the sync will work as expected, click "Test run," then refresh the page to see te result of the test.
 
-Toggle `Active` to begin the sync. Refresh the page and scroll to the bottom to verify that a sync job has been planned.
+<Example>
+  <img class="rounded-md w-full" src="/img/starting_test_run.gif" />
+</Example>
 
-You can also test the sync without writing data (before or during a sync) by clicking "Test run" on the Job History section. 
+Then, click "Run once" or toggle the sync to `Active` to begin the sync. Refresh the page to verify that a sync job has been planned.
 
-<Note>If you need help setting up either side of the sync (e.g., you want to sync Airtable with Postgres but don't have Postgres set up yet), just ping us at eng@usebracket.com! We're happy to help with that setup.</Note>
+<Example>
+  <img class="rounded-md w-full" src="/img/starting_sfdc_sync.gif" />
+</Example>
