@@ -75,6 +75,10 @@
           "pages": ["connecting/mongodb_connecting", "connecting/mongodb_pkey"]
         },
         {
+          "group": "MySQL",
+          "pages": ["connecting/mysql_connecting"]
+        },
+        {
           "group": "Postgres",
           "pages": ["connecting/postgres_connecting", "connecting/postgres_pkey"]
         },

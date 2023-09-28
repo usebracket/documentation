@@ -1,0 +1,47 @@
+---
+title: 'Connecting MySQL'
+sidebarTitle: "Connecting"
+description: 'Follow these steps to sync MySQL tables'
+---
+
+## Setting up the sync
+
+1. On the Bracket web-app, for either the primary or secondary source, select "MySQL" from the drop-down.
+
+<Example>
+  <img class="rounded-md w-full" src="/img/mysql-1.png" />
+</Example>
+
+2. Enter your MySQL connection details, then click "Next"
+
+<Example>
+  <img class="rounded-md w-full" src="/img/mysql-2.png" />
+</Example>
+
+<Tip>You can also choose to connect to dedicated IP addresses, with SSL protocols enabled, or through an SSH tunnel.</Tip>
+
+3. If MySQL is your _primary_ source, either choose the table from the drop-down menu, or write a SQL statement to produce the data you'd like to sync.
+
+<Example>
+  <img class="rounded-md w-full" src="/img/mysql-3.png" />
+</Example>
+
+4. If MySQL is your _secondary_ source, then either choose to generate a table from scratch (recommended), or connect with an existing table. 
+
+5. Map your fields and select your sync direction.
+
+<Tip>If you generated a MySQL table from scratch, Bracket will transform your primary source field names to snake case. If you connect an existing MySQL table, Bracket will guess the field mapping based on string similarities between fields. Always make sure to verify these before moving on.</Tip>
+
+6. Select your sync frequency and name your sync.
+
+## Testing and running your sync
+
+1. On the sync overview page, click "Test run" to make sure you are receiving and inserting the number of records you expect. 
+
+<Example>
+  <img class="rounded-md w-full" src="/img/mysql_start_test.gif" />
+</Example>
+
+2. After testing, click either "Run once" to perform a single run, or toggle the sync to "Active" to start indefinite scheduled runs. 
+
+<Info>Depending on the size of your data, the first sync run can take significantly longer to run than subsequent runs. It's rare, but if your initial run takes over an hour, Bracket Support will reach out to you with a custom solution. </Info>
