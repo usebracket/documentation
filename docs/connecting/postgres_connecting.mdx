@@ -24,6 +24,22 @@ postgresql://[user[:password]@][host][:port][,...][/database][?param1=value1&...
 
 2. Enter the details above to the web app at app.usebracket.com
 
+## Assigning user permissions
+
+For Bracket to be able to be able to generate Postgres tables from other primary sources, we require the following permissions, which can be assigned via SQL. 
+
+```shell Database-level permissions
+GRANT CONNECT, CREATE ON DATABASE [your_database] TO [bracket_username];
+```
+```shell Schema-level permissions
+GRANT USAGE, CREATE, ALTER, REFERENCES ON SCHEMA [your_schema] TO [bracket_username];
+```
+For Bracket to be able to sync with an existing Postgres table, we require the following permissions:
+
+```shell Schema-level permissions
+GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES, TRIGGER ON [your_table] TO [bracket_username];
+```
+
 ## OPTIONAL: Creating a read only user on your database
 <Note>Perform this step if you would like to give Bracket access through a dedicated account. Skip this step if you prefer to use an existing Postgres account during setup.</Note>
 
