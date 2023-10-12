@@ -1,0 +1,23 @@
+---
+title: 'Creating Postgres tables using Bracket'
+sidebarTitle: "Creating a table"
+description: 'How to generate a Postgres table from scratch using BRacket'
+---
+
+## Step-by-step guide
+
+1. Set up a Postgres database with any hosting provider. Supabase is our favorite, but you can choose anybody you like.
+2. Sign into [Bracket](https://app.usebracket.com/syncs/overview)
+3. Set up your primary source, and select Postgres as your secondary source. 
+4. Select "I want Bracket to generate the table for me," name your table (or use the suggested name), and click "Continue"
+
+<Example>
+  <img class="rounded-md w-full" src="/img/postgres_bab_onboarding.gif" />
+</Example>
+
+## Some things to keep in mind
+
+- Bracket standardizes the field names from your primary source into snake case to make your field names Postgres-friendly.
+- Bracket automatically creates a primary key field called `bracket_pkey`, which takes on a UUIDv4 value. 
+- Bracket also automatically creates a datetime field called `bracket_updated_at`, which takes on the datetime at which a record is created or updated, whichever is more recent. Bracket uses this field to make syncing real-time.
+- Finally, Bracket creates a Postgres function called `bracket_update_timestamp()`, which gets applied to `bracket_updated_at`.
