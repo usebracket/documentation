@@ -80,7 +80,7 @@
         },
         {
           "group": "Postgres",
-          "pages": ["connecting/postgres_connecting", "connecting/postgres_bab_onboarding", "connecting/postgres_pkey"]
+          "pages": ["connecting/postgres_connecting", "connecting/postgres_creating_table", "connecting/postgres_pkey"]
         },
         {
           "group": "Snowflake",
