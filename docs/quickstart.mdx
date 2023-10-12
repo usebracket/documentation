@@ -11,8 +11,7 @@ Bracket lets you connect popular tools and backend databases for two-way or one-
 
 The prerequisites for a successful sync are:
 1. Both data sources exist (i.e., Bracket does not host on your behalf)
-2. Both data sources have a [unique key](/pkeys)
-3. The secondary data source is empty of data
+2. The secondary data source is empty of data
 
 ## 2. Create an account on our web app
 
@@ -26,7 +25,7 @@ On the web app, you'll need to enter certain connection details to get syncs run
 | --------------------------------      | --------------------------------------------------------------------------------------------------------------------------------- |
 | [Airtable](/connecting/airtable_connecting)      | An existing Airtable base                                                                                                |
 | [Notion](/connecting/notion_connecting)          | An existing Notion database                                                                 |
-| [Google Sheets](/connecting/gsheets_connecting)  | Share Sheet with Bracket service account and get the Sheet ID                                                                     |
+| [Google Sheets](/connecting/gsheets_connecting)  | An existing Google Sheet                                                                     |
 | [Postgres](/connecting/postgres_connecting)      | Connection string URI                                                                                                             |
 | [MongoDB](/connecting/mongodb_connecting)          | Connection string URI with Bracket as added user and whitelisting IP address 0.0.0.0/0 _or_ Bracket's dedicated IP addresses      |
 | [Snowflake](/connecting/snowflake_connecting)      | Login credentials and details about the warehouse / table to be synced                                                            |
@@ -55,6 +54,8 @@ If you are using the [legacy app](https://legacy.app.usebracket.com/), before in
 2. Verify that `INTERSECTION TYPE` is accurate. You can figure out the appropriate intersection type [here](https://docs.google.com/spreadsheets/d/1J9_1I608ARf06TohXeauN9tA477pUxLOvfTHuIOFa-0/edit?usp=sharing)
 
 ## 6. Test and initiate sync
+
+When you create your sync, your primary source will automatically seed the secondary source if the secondary source is 
 
 To make sure the sync will work as expected, click "Test run," then refresh the page to see te result of the test.
 
