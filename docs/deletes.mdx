@@ -12,14 +12,39 @@ Currently, Bracket supports delete syncs for specific data source integrations. 
 
 | Data source                                  | Deletes supported?                                                                                                                  |
 | --------------------------------      | --------------------------------------------------------------------------------------------------------------------------------- |
-| [Airtable](/connecting/airtable_connecting)      | In beta                                                                                              |
-| [Notion](/connecting/notion_connecting)          | No                                                                 |
-| [Google Sheets](/connecting/gsheets_connecting)  | No                                                                     |
+| [Airtable](/connecting/airtable_connecting)      | Yes                                                                                              |
+| [Notion](/connecting/notion_connecting)          | Manually on legacy app                                                                   |
+| [Google Sheets](/connecting/gsheets_connecting)  | Yes                                                                     |
 | [Postgres](/connecting/postgres_connecting)      | Yes                                                                                                             |
-| [MongoDB](/database/mongodb_connecting)          | In beta      |
+| [MongoDB](/database/mongodb_connecting)          | Manually on legacy app      |
 | [Snowflake](/database/snowflake_connecting)      | No                                                            |
 | [Firebase](/database/firebase_connecting)      | No                                                            |
+| [MySQL](/database/mysql_connecting)      | Yes                                                            |
+| [Salesforce](/database/salesforce_connecting)      | No                                                            |
 
+<Info>Bracket scans for deletes every day at midnight UTC, regardless of your sync frequency. If you need deletes to sync faster, reach out to us at eng@usebracket.com!</Info>
+
+## Manual deletes
+
+By default, all new syncs have a manual delete policy. If deletes to the data source are supported, you can review these deletes at any time by navigating to the "Deletes" tab.
+
+Once there, you can see the history of delete scans and delete executions. You can initiate a new delete scan by clicking "Refresh," then manually review deletes from both synced sources. 
+
+If you choose to leave the records in the paired data source, Bracket will no longer give you the option to delete the record in the future. If you decide you'd like to delete it later, you'll need to do so directly in the data source.
+
+<Example>
+  <img class="rounded-md w-full" src="/img/postgres_airtable_manual_deletes.gif" />
+</Example>
+
+## Automatic deletes
+
+If you want all deleted records to automatically sync every day, then go to the "Advanced" tab on your sync and change the delete protocol to "Automatic." 
+
+With an automatic delete policy, Bracket will execute all deletes after its daily scan at midnight UTC. 
+
+<Example>
+  <img class="rounded-md w-full" src="/img/change_delete_policy.gif" />
+</Example>
 
 ## What if I delete records, and deletes are not supported?
 
