@@ -6,7 +6,7 @@ description: 'How to map fields in a Bracket sync'
 
 ## Summary
 
-Every sync you set up with Bracket will have a field mapping between the data sources. It's important to verify that the field mapping is accurate to make sure your sync works properly. 
+Every sync you set up with Bracket will have a field mapping between the data sources. It's important to verify that the field mapping is accurate to make sure your sync works properly.
 
 ## How to review the field mapping for a new sync
 
@@ -15,13 +15,13 @@ Every sync you set up with Bracket will have a field mapping between the data so
 
 <Note>By default, Bracket will list all fields from your primary data source for every new sync, and assume the secondary source field names are identical. If you have a different naming convention for your secondary source, you must update the field names in the mapping.</Note>
 
-3. Verify that the `Intersection Type` for each field is accurate. `Intersection Type` is Bracket's bridge between field types from two different data sources. You can see a mapping of all supported field types and their respective `Intersection Type` values at the button below. 
+3. Verify that the `Intersection Type` for each field is accurate. `Intersection Type` is Bracket's bridge between field types from two different data sources. You can see a mapping of all supported field types and their respective `Intersection Type` values at the button below.
 
 <Card title="Bracket Intersection Type Mapping" href="https://docs.google.com/spreadsheets/d/1J9_1I608ARf06TohXeauN9tA477pUxLOvfTHuIOFa-0/edit?usp=sharing" icon={duotone("link")}>See all supported field types and Intersection Types here.</Card>
 
 <Warning>Similar to field names, Bracket interpolates the `Intersection Type` based on the primary data source's fields. Depending on your secondary source, you may need to adjust the `Intersection Type`.</Warning>
 
-4. After any changes, click "Update mapping" to save your changes. 
+4. After any changes, click "Update mapping" to save your changes.
 
 
 ## Do I need to create the fields in each data source beforehand?
@@ -40,3 +40,8 @@ Every sync you set up with Bracket will have a field mapping between the data so
 
 
 
+## Limits
+
+On the self-serve application, users can only sync a total of 300 fields (150 on each data source
+in a bidirectional sync). If you'd like to sync more fields than this limit, please reach out to
+our engineering team at eng@usebracket.com!
