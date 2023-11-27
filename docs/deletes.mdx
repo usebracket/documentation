@@ -20,6 +20,7 @@ Currently, Bracket supports delete syncs for specific data source integrations. 
 | [Snowflake](/database/snowflake_connecting)      | No                                                            |
 | [Firebase](/database/firebase_connecting)      | No                                                            |
 | [MySQL](/database/mysql_connecting)      | Yes                                                            |
+| [Hubspot](/database/hubspot_connecting)  | No                                                            |
 | [Salesforce](/database/salesforce_connecting)      | No                                                            |
 
 <Info>Bracket scans for deletes every day at midnight UTC, regardless of your sync frequency. If you need deletes to sync faster, reach out to us at eng@usebracket.com!</Info>
@@ -28,7 +29,7 @@ Currently, Bracket supports delete syncs for specific data source integrations. 
 
 By default, all new syncs have a manual delete policy. If deletes to the data source are supported, you can review these deletes at any time by navigating to the "Deletes" tab.
 
-Once there, you can see the history of delete scans and delete executions. You can initiate a new delete scan by clicking "Refresh," then manually review deletes from both synced sources. 
+Once there, you can see the history of delete scans and delete executions. You can initiate a new delete scan by clicking "Refresh," then manually review deletes from both synced sources.
 
 If you choose to leave the records in the paired data source, Bracket will no longer give you the option to delete the record in the future. If you decide you'd like to delete it later, you'll need to do so directly in the data source.
 
@@ -38,9 +39,9 @@ If you choose to leave the records in the paired data source, Bracket will no lo
 
 ## Automatic deletes
 
-If you want all deleted records to automatically sync every day, then go to the "Advanced" tab on your sync and change the delete protocol to "Automatic." 
+If you want all deleted records to automatically sync every day, then go to the "Advanced" tab on your sync and change the delete protocol to "Automatic."
 
-With an automatic delete policy, Bracket will execute all deletes after its daily scan at midnight UTC. 
+With an automatic delete policy, Bracket will execute all deletes after its daily scan at midnight UTC.
 
 <Example>
   <img class="rounded-md w-full" src="/img/change_delete_policy.gif" />
@@ -48,6 +49,6 @@ With an automatic delete policy, Bracket will execute all deletes after its dail
 
 ## What if I delete records, and deletes are not supported?
 
-If you delete records in one source, and deletes are not supported for the opposing source, then nothing will happen to the paired record in the opposing source. Essentially, the paired record becomes orphaned and can safely be deleted. 
+If you delete records in one source, and deletes are not supported for the opposing source, then nothing will happen to the paired record in the opposing source. Essentially, the paired record becomes orphaned and can safely be deleted.
 
 <Tip>If you delete a record by mistake, and you would like it to enter back into the sync, we recommend copying its contents, deleting its paired record in the opposing source, then inserting it fresh into either source to ensure no data duplication.</Tip>
