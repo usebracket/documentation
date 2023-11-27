@@ -53,10 +53,6 @@
         {
           "group": "Airtable",
           "pages": ["connecting/airtable_connecting", "connecting/airtable_pkey"]
-        }, 
-        {
-          "group": "Google Sheets",
-          "pages": ["connecting/gsheets_connecting", "connecting/gsheets_pkey"]
         },
         {
           "group": "Notion",
@@ -71,6 +67,14 @@
           "pages": ["connecting/firebase_connecting", "connecting/firebase_pkey"]
         },
         {
+          "group": "Google Sheets",
+          "pages": ["connecting/gsheets_connecting", "connecting/gsheets_pkey"]
+        },
+        {
+          "group": "Hubspot",
+          "pages": ["connecting/hubspot_connecting"]
+        },
+        {
           "group": "MongoDB",
           "pages": ["connecting/mongodb_connecting", "connecting/mongodb_pkey"]
         },
@@ -83,12 +87,12 @@
           "pages": ["connecting/postgres_connecting", "connecting/postgres_creating_table", "connecting/postgres_pkey"]
         },
         {
-          "group": "Snowflake",
-          "pages": ["connecting/snowflake_connecting", "connecting/snowflake_pkey"]
-        },
-        {
           "group": "Salesforce",
           "pages": ["connecting/salesforce_connecting"]
+        },
+        {
+          "group": "Snowflake",
+          "pages": ["connecting/snowflake_connecting", "connecting/snowflake_pkey"]
         }
       ]
     },
@@ -98,7 +102,7 @@
         {
           "group": "Startups",
           "pages": ["uses/startup_sharedata","uses/startup_godview","uses/startup_waitlist"]
-        }, 
+        },
         {
           "group": "Customer Support",
           "pages": ["uses/cs_featureflag","uses/cs_onboarding","uses/cs_sla","uses/cs_refunds","uses/cs_cs360"]
