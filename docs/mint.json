@@ -6,11 +6,11 @@
   },
   "favicon": "/favicon.png",
   "colors": {
-    "primary": "#235378",
-    "light": "#959BE5",
-    "dark": "#322E8A",
-    "ultraLight": "#E6F1FA",
-    "ultraDark": "#1F1844"
+    "primary": "#47689E",
+    "light": "#7F97B9",
+    "dark": "#2B3A4F",
+    "ultraLight": "#EFEEEE",
+    "ultraDark": "#212C3C"
   },
   "topbarCtaButton": {
     "name": "Get Started",
