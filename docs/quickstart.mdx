@@ -2,16 +2,19 @@
 title: 'Quick Start'
 description: 'How to set up a connection with Bracket'
 ---
+## Summary
 
-Bracket lets you connect popular tools and backend databases for two-way or one-way syncs. In this guide, we'll talk through how to get everything connected in a few quick steps.
+Bracket lets you connect CRMs and databases for two-way or one-way syncs. In this guide, we'll talk through how to get everything connected in a few quick steps.
 
-<Info>If you'd like to join a private Slack or Discord group with our team for support or questions, just ping us at founders@usebracket.com</Info>
+<Info>If you'd like to join a private Slack or Discord group with our team for support or questions, just ping us at eng@usebracket.com</Info>
 
 ## 1. Prepare your data sources for the sync
 
 The prerequisites for a successful sync are:
-1. Both data sources exist (i.e., Bracket does not host on your behalf)
-2. The secondary data source is empty of data
+1. Both data sources are set up (i.e., Bracket does not host on your behalf)
+2. The secondary data source is empty of data.
+
+<Tip>Note that if Postgres is your secondary source, you do not need to have a table created before setting up your sync - Bracket will do that for you.</Tip>
 
 ## 2. Create an account on our web app
 
@@ -23,14 +26,14 @@ On the web app, you'll need to enter certain connection details to get syncs run
 
 | Data source                                  | What you'll need                                                                                                                  |
 | --------------------------------      | --------------------------------------------------------------------------------------------------------------------------------- |
+| [Salesforce](/connecting/salesforce_connecting)    | Valid Salesforce account                                                                                                          |
+| [Postgres](/connecting/postgres_connecting)      | Connection string URI                                                                                                             |
 | [Airtable](/connecting/airtable_connecting)      | An existing Airtable base                                                                                                |
+| [Google Sheets](/connecting/gsheets_connecting)  | An existing Google Sheet                                                                     |
 | [Notion](/connecting/notion_connecting)          | An existing Notion database                                                                 |
 | [Hubspot](/connecting/hubspot_connecting)          | A valid Hubspot account                                                                 |
-| [Google Sheets](/connecting/gsheets_connecting)  | An existing Google Sheet                                                                     |
-| [Postgres](/connecting/postgres_connecting)      | Connection string URI                                                                                                             |
 | [MongoDB](/connecting/mongodb_connecting)          | Connection string URI with Bracket as added user and whitelisting IP address 0.0.0.0/0 _or_ Bracket's dedicated IP addresses      |
 | [Snowflake](/connecting/snowflake_connecting)      | Login credentials and details about the warehouse / table to be synced                                                            |
-| [Salesforce](/connecting/salesforce_connecting)    | Valid Salesforce account                                                                                                          |
 
 <Example>
   <img class="rounded-md w-full" src="/img/onboarding_choose_primary_source.gif" />
@@ -54,9 +57,12 @@ If you are using the [legacy app](https://legacy.app.usebracket.com/), before in
 1. Verify that the field names for each data source have appropriate capitalization, spaces, etc. On the legacy app, field names are case-sensitive.
 2. Verify that `INTERSECTION TYPE` is accurate. You can figure out the appropriate intersection type [here](https://docs.google.com/spreadsheets/d/1J9_1I608ARf06TohXeauN9tA477pUxLOvfTHuIOFa-0/edit?usp=sharing)
 
-## 6. Test and initiate sync
+## 6. Initiate sync
 
 When you create your sync, your primary source will automatically seed the secondary source if the secondary source is empty of data.
+
+<Warning>If the secondary data source is already populated, the seed will fail. However, we strongly recommend clearing the secondary source before trying to run another sync job, otherwise you may duplicate data.</Warning>
+
 
 After that initial seed, to make sure the sync will work as expected, click "Test run," then refresh the page to see te result of the test.
 
