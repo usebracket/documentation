@@ -14,7 +14,7 @@ The prerequisites for a successful sync are:
 1. Both data sources are set up (i.e., Bracket does not host on your behalf)
 2. The secondary data source is empty of data.
 
-<Tip>Note that if Postgres is your secondary source, you do not need to have a table created before setting up your sync - Bracket will do that for you.</Tip>
+<Tip>Note that if Postgres is your secondary source, you do not need to have a table created before setting up your sync - Bracket can generate it for you.</Tip>
 
 ## 2. Create an account on our web app
 
@@ -29,10 +29,11 @@ On the web app, you'll need to enter certain connection details to get syncs run
 | [Salesforce](/connecting/salesforce_connecting)    | Valid Salesforce account                                                                                                          |
 | [Postgres](/connecting/postgres_connecting)      | Connection string URI                                                                                                             |
 | [Airtable](/connecting/airtable_connecting)      | An existing Airtable base                                                                                                |
+| [Firestore](/connecting/firebase_connecting)      | Your Firestore project ID, private key, client email, and collection path                                                                                                |
 | [Google Sheets](/connecting/gsheets_connecting)  | An existing Google Sheet                                                                     |
-| [Notion](/connecting/notion_connecting)          | An existing Notion database                                                                 |
 | [Hubspot](/connecting/hubspot_connecting)          | A valid Hubspot account                                                                 |
 | [MongoDB](/connecting/mongodb_connecting)          | Connection string URI with Bracket as added user and whitelisting IP address 0.0.0.0/0 _or_ Bracket's dedicated IP addresses      |
+| [Notion](/connecting/notion_connecting)          | An existing Notion database                                                                 |
 | [Snowflake](/connecting/snowflake_connecting)      | Login credentials and details about the warehouse / table to be synced                                                            |
 
 <Example>
@@ -75,3 +76,22 @@ Then, click "Run once" or toggle the sync to `Active` to begin the sync. Refresh
 <Example>
   <img class="rounded-md w-full" src="/img/starting_sfdc_sync.gif" />
 </Example>
+
+
+
+<Steps>
+  <Step title="First Step">
+    The prerequisites for a successful sync are:
+      1. Both data sources are set up (i.e., Bracket does not host on your behalf)
+      2. The secondary data source is empty of data.
+
+      <Tip>Note that if Postgres is your secondary source, you do not need to have a table created before setting up your sync - Bracket can generate it for you.</Tip>
+  
+  </Step>
+  <Step title="Second Step">
+    These are instructions or content that only pertain to the second step.
+  </Step>
+  <Step title="Third Step">
+    These are instructions or content that only pertain to the third step.
+  </Step>
+</Steps>
