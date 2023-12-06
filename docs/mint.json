@@ -26,13 +26,13 @@
     {
       "name": "Demo",
       "icon": "circle-play",
-      "color": "#ef4444",
+      "color": "#db4e5e",
       "url": "https://www.youtube.com/watch?v=sRkaAa667T0"
     },
     {
       "name": "Contact Us",
       "icon": "envelope",
-      "color": "#0284c7",
+      "color": "#ffcc4c",
       "url": "mailto:founders@usebracket.com"
     }
   ],
