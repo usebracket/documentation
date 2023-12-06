@@ -6,7 +6,7 @@
   },
   "favicon": "/favicon.png",
   "colors": {
-    "primary": "#4444CF",
+    "primary": "#235378",
     "light": "#959BE5",
     "dark": "#322E8A",
     "ultraLight": "#E6F1FA",
@@ -14,7 +14,7 @@
   },
   "topbarCtaButton": {
     "name": "Get Started",
-    "url": "app.usebracket.com"
+    "url": "https://app.usebracket.com/"
   },
   "topbarLinks": [
     {
@@ -28,12 +28,6 @@
       "icon": "circle-play",
       "color": "#ef4444",
       "url": "https://www.youtube.com/watch?v=sRkaAa667T0"
-    },
-    {
-      "name": "Use Cases",
-      "icon": "rocket-launch",
-      "color": "#eab208",
-      "url": "uses"
     },
     {
       "name": "Contact Us",
