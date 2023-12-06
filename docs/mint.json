@@ -89,19 +89,6 @@
           "pages": ["connecting/snowflake_connecting", "connecting/snowflake_pkey"]
         }
       ]
-    },
-    {
-      "group": "Use cases",
-      "pages": [
-        {
-          "group": "Startups",
-          "pages": ["uses/startup_sharedata","uses/startup_godview","uses/startup_waitlist"]
-        },
-        {
-          "group": "Customer Support",
-          "pages": ["uses/cs_featureflag","uses/cs_onboarding","uses/cs_sla","uses/cs_refunds","uses/cs_cs360"]
-        }
-      ]
     }
   ],
   "footerSocials": {
