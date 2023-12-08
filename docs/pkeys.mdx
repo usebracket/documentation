@@ -3,13 +3,19 @@ title: 'Primary Keys'
 description: 'How Bracket uniquely identifies records'
 ---
 
+## Summary
+
 To support safe syncing, Bracket matches records based on their primary key. Below, we layout what Bracket uses for primary keys depending on the data source, and if there is any prep work needed from you. 
 
 | Tool                                  | Primary key                            | Preparation needed? 
 | --------------------------------      | -------------------------------------- | --------------------------------------
-| [Airtable](/connecting/airtable)      | Airtable record ID                     | No
-| [Notion](/connecting/notion)          | Notion object ID                       | No
-| [Google Sheets](/connecting/gsheets)  | Unique field created by user           | Yes, see [guide](/connecting/gsheets_pkey)
-| [Postgres](/connecting/postgres)      | Unique field created by user           | Yes, see [guide](/connecting/postgres_pkey)
-| [MongoDB](/database/mongodb)          | MongoDB object ID                      | No
-| [Snowflake](/database/snowflake)      | Unique field created by user           | Yes, see [guide](/connecting/snowflake_pkey)
+| [Postgres](/connecting/postgres_connecting)      | Unique field created by Bracket or user           | Potentially, see [guide](/connecting/postgres_pkey)
+| [Salesforce](/connecting/salesforce_connecting)  | Salesforce Record ID                     | No
+| [Hubspot](/connecting/hubspot_connecting)      | Hubspot record ID                     | No
+| [Airtable](/connecting/airtable_connecting)      | Airtable record ID                     | No
+| [Google Sheets](/connecting/gsheets_connecting)  | Unique field created by user           | Yes, see [guide](/connecting/gsheets_pkey)
+| [MySQL](/connecting/mysql_connecting)  | Unique field created by user           | Yes, see [guide](/connecting/gsheets_pkey)
+| [MongoDB](/database/mongodb_connecting)          | MongoDB object ID                      | No
+| [Firestore](/database/firebase_connecting)          | Firestore document ID                      | No
+| [Snowflake](/database/snowflake_connecting)      | Unique field created by user           | Yes, see [guide](/connecting/snowflake_pkey)
+| [Notion](/connecting/notion_connecting)          | Notion object ID                       | No
