@@ -7,21 +7,23 @@ description: 'How Bracket handles deleted records'
 
 Currently, Bracket supports delete syncs for specific data source integrations. In the table below, you can see which sources are supported.
 
+**Currently, Bracket only supports deletes on tables & collections less than 0.5 GB**
+
 <Note>When we say "Deletes supported," we mean that deletes can be made _to_ the source when a paired record is deleted from the opposing source.</Note>
 
 
 | Data source                                  | Deletes supported?                                                                                                                  |
 | --------------------------------      | --------------------------------------------------------------------------------------------------------------------------------- |
-| [Airtable](/connecting/airtable_connecting)      | Yes                                                                                              |
-| [Notion](/connecting/notion_connecting)          | Manually on legacy app                                                                   |
-| [Google Sheets](/connecting/gsheets_connecting)  | Yes                                                                     |
 | [Postgres](/connecting/postgres_connecting)      | Yes                                                                                                             |
-| [MongoDB](/database/mongodb_connecting)          | Manually on legacy app      |
-| [Snowflake](/database/snowflake_connecting)      | No                                                            |
-| [Firebase](/database/firebase_connecting)      | No                                                            |
-| [MySQL](/database/mysql_connecting)      | Yes                                                            |
+| [Salesforce](/database/salesforce_connecting)      | Yes                                                            |
 | [Hubspot](/database/hubspot_connecting)  | No                                                            |
-| [Salesforce](/database/salesforce_connecting)      | No                                                            |
+| [Airtable](/connecting/airtable_connecting)      | Yes                                                                                              |
+| [Google Sheets](/connecting/gsheets_connecting)  | Yes                                                                     |
+| [MySQL](/database/mysql_connecting)      | Yes                                                            |
+| [MongoDB](/database/mongodb_connecting)          | Manually on legacy app      |
+| [Firestore](/database/firebase_connecting)      | No                                                            |
+| [Snowflake](/database/snowflake_connecting)      | No                                                            |
+| [Notion](/connecting/notion_connecting)          | Manually on legacy app                                                                   |
 
 <Info>Bracket scans for deletes every day at midnight UTC, regardless of your sync frequency. If you need deletes to sync faster, reach out to us at eng@usebracket.com!</Info>
 
