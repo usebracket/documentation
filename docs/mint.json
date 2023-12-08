@@ -43,12 +43,11 @@
         "introduction",
         "quickstart", 
         "field_mapping",
-          {
-            "group": "Primary Keys",
-            "pages": ["pkeys"]
-          }, 
         "pkeys", 
-        "foreign_keys", 
+        {
+          "group": "Foreign Keys",
+          "pages": ["foreign_keys"]
+        }, 
         "deletes"]
     },
     {
