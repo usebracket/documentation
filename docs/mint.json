@@ -41,7 +41,12 @@
       "group": "Introduction",
       "pages": [
         "introduction",
-        "quickstart", 
+        "quickstart"
+      ]
+    },
+    {
+      "Reference": "Guides",
+      "pages": [
         "pkeys", 
         {
           "group": "Foreign Keys",
