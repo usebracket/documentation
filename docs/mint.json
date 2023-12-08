@@ -42,13 +42,17 @@
       "pages": [
         "introduction",
         "quickstart", 
-        "field_mapping",
         "pkeys", 
         {
           "group": "Foreign Keys",
           "pages": ["foreign_keys"]
         }, 
-        "deletes"]
+        "deletes",
+        {
+          "group": "Legacy app",
+          "pages": ["legacy_field_mapping"]
+        }
+      ]
     },
     {
       "group": "Integrations",
