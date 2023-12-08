@@ -1,0 +1,41 @@
+---
+title: 'Field mapping and field types'
+sidebarTitle: "Field Mapping"
+description: 'How to map fields in a Bracket legacy app sync'
+---
+
+## Summary
+
+Every sync you set up on the Bracket legacy app will have a field mapping between the data sources. It's important to verify that the field mapping is accurate to make sure your sync works properly.
+
+## How to review the field mapping for a new sync
+
+1. Submit a [new connection](https://legacy.app.usebracket.com/) or navigate to an [existing connection](https://legacy.app.usebracket.com/connections)
+2. On the connection dashboard, scroll down to the "Fields" section. Verify that the field names for both your primary and secondary sources are accurate, and delete any fields that you do not want to sync.
+
+<Note>By default, Bracket will list all fields from your primary data source for every new sync, and assume the secondary source field names are identical. If you have a different naming convention for your secondary source, you must update the field names in the mapping.</Note>
+
+3. Verify that the `Intersection Type` for each field is accurate. `Intersection Type` is Bracket's bridge between field types from two different data sources. You can see a mapping of all supported field types and their respective `Intersection Type` values at the button below.
+
+<Card title="Bracket Intersection Type Mapping" href="https://docs.google.com/spreadsheets/d/1J9_1I608ARf06TohXeauN9tA477pUxLOvfTHuIOFa-0/edit?usp=sharing" icon={duotone("link")}>See all supported field types and Intersection Types here.</Card>
+
+<Warning>Similar to field names, Bracket interpolates the `Intersection Type` based on the primary data source's fields. Depending on your secondary source, you may need to adjust the `Intersection Type`.</Warning>
+
+4. After any changes, click "Update mapping" to save your changes.
+
+
+## Do I need to create the fields in each data source beforehand?
+
+**In most cases, Bracket can only sync with existing fields**, so you must create the fields you want to sync in both sources before syncing them. However, there are some exceptions. See below for a breakdown on when Bracket generates fields automatically.
+
+| Data source                                       |    Fields generated when new connection submitted?                                                                                | Fields generated when adding to existing sync? |
+| --------------------------------                  | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| [Airtable](/connecting/airtable_connecting)      | Yes, if you select "Create table for me" during setup                                                                              | No, field must be added to data source separately |
+| [Notion](/connecting/notion_connecting)          | No, fields must already exist                                                                                                      |  No, field must be added to data source separately |
+| [Hubspot](/connecting/hubspot_connecting)          | No, fields must already exist                                                                          |  No, field must be added to data source separately |
+| [Google Sheets](/connecting/gsheets_connecting)  | No, fields must already exist                                                                                                      |  No, field must be added to data source separately |
+| [Postgres](/connecting/postgres_connecting)      | No, fields must already exist                                                                                                      |  No, field must be added to data source separately |
+| [MongoDB](/database/mongodb_connecting)          | Yes                                                                                                                                |  Yes |
+| [Snowflake](/database/snowflake_connecting)      | No, fields must already exist                                                                                                      |  No, field must be added to data source separately |
+| [Firebase](/database/firebase_connecting)      | Yes                                                                                                                                  |  Yes |
+
