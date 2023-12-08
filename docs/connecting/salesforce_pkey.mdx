@@ -1,0 +1,13 @@
+---
+title: "Salesforce primary keys"
+sidebarTitle: "Primary keys"
+description: "How Bracket treats Salesforce primary keys"
+---
+
+
+## Summary
+
+Bracket uses Salesforce record IDs provided through the Salesforce API to uniquely map each record to the opposing data source. You do not need to do any prep work to configure primary keys. 
+
+<Warning>If you are setting up a two-way sync with Postgres, and are syncing your Salesforce ID field to Postgres, make sure that your Postgres primary key field is separate from the Salesforce ID field. Otherwise, you will not be able to insert new records to Postgres.</Warning>
+
