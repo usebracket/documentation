@@ -39,7 +39,17 @@
   "navigation": [
     {
       "group": "Introduction",
-      "pages": ["introduction", "quickstart", "field_mapping", "pkeys", "foreign_keys", "deletes"]
+      "pages": [
+        "introduction",
+        "quickstart", 
+        "field_mapping",
+          {
+            "group": "Primary Keys",
+            "pages": ["pkeys"]
+          }, 
+        "pkeys", 
+        "foreign_keys", 
+        "deletes"]
     },
     {
       "group": "Integrations",
