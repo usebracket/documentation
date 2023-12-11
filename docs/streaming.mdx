@@ -5,13 +5,13 @@ description: 'How Bracket syncs using the streaming method'
 
 ## Summary
 
-The streaming sync method involves listening to events from Salesforce's [pub/sub API](https://developer.salesforce.com/docs/platform/pub-sub-api/overview) and a log of Postgres events, then transacting any events using the REST API and SQL. 
+The streaming sync method involves listening to events from Salesforce's [pub/sub API](https://developer.salesforce.com/docs/platform/pub-sub-api/overview) and a log of Postgres events, then transacting any events using the REST API and SQL.
 
-The benefits of streaming are faster syncs (max 30-second latency), optimized Salesforce API usage, and less data stored on Bracket's servers. 
+The benefits of streaming are faster syncs (max 30-second latency), optimized Salesforce API usage, and less data stored on Bracket's servers.
 
-Under streaming, the only data Bracket stores on its own servers is a list of primary keys corresponding to unprocessed records from Salesforce, which helps us retry any failed record syncs. This data can also be self-hosted on your servers. 
+Under streaming, the only data Bracket stores on its own servers is a list of primary keys corresponding to unprocessed records from Salesforce, which helps us retry any failed record syncs. This data can also be self-hosted on your servers.
 
-This is the format of the `unprocessedRecords` table:
+This is the format of the `unprocessed_records` table:
 
 <Example>
   <img class="rounded-md w-full" src="/img/unprocessed_records_table.png" />
@@ -23,13 +23,13 @@ This is the format of the `unprocessedRecords` table:
 
 ### Salesforce
 
-1. Bracket must have a dedicated Salesforce account. This helps us separate valid user edits from changes synced by Bracket. 
+1. Bracket must have a dedicated Salesforce account. This helps us separate valid user edits from changes synced by Bracket.
 2. Salesforce must be the primary source, meaning it will win any merge conflicts
 3. The synced Salesforce object must have a unique `Id` field. In most objects, this is automatic.
 
 ### Postgres
 
-1. There must be a separate schema called `bracket_audit`. This is where Bracket will store the trigger log table, which contains a history of Postgres events. 
+1. There must be a separate schema called `bracket_audit`. This is where Bracket will store the trigger log table, which contains a history of Postgres events.
 2. Bracket must have a dedicated Postgres user with the permissions below:
 
 ```sql Create user statement
@@ -37,13 +37,13 @@ CREATE USER bracket WITH PASSWORD '<any_safe_password>';
 GRANT CONNECT, CREATE ON DATABASE <postgres> TO bracket;
 GRANT USAGE, CREATE, ALTER, REFERENCES ON SCHEMA <public> TO bracket;
 GRANT USAGE, CREATE, ALTER, REFERENCES ON SCHEMA bracket_audit TO bracket;
-GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES, TRIGGER ON ALL TABLES IN SCHEMA <public> TO bracket; 
+GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES, TRIGGER ON ALL TABLES IN SCHEMA <public> TO bracket;
 GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES, TRIGGER ON ALL TABLES IN SCHEMA bracket_audit TO bracket;
 GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA bracket_audit TO bracket;
 ```
 
 3. Any synced table has `bracket_pkey` as the primary key field, with UUIDv4 values. Bracket will generate these for you for any created tables.
-4. Any synced table has a field called `id`, which syncs with the Salesforce ID field. 
+4. Any synced table has a field called `id`, which syncs with the Salesforce ID field.
 
 ## The streaming sync method, step-by-step
 
@@ -51,25 +51,34 @@ At cadences as fast as every 30 seconds, Bracket performs the following:
 
 <Steps>
   <Step title="First Step">
-    Bracket checks the Salesforce pub/sub API to see if any events have occurred since the last successful data read/write. E.g., if there have been no changes to your Salesforce object in six minutes, Bracket is checking the pub/sub API for any events from the last six minutes.
+    Bracket checks the Salesforce pub/sub API to see if any events have occurred since the last
+    successful data read/write. E.g., if the last change read by Bracket on your Salesforce
+    object was processed six minutes ago, Bracket will only check the pub/sub API for any events
+    with a `commitTimestamp` greater than the last six minutes.
 
-    If there are no new events, and it's been less than 10 minutes since the last successful poll, Bracket does not poll Salesforce.
+    If there are no new events, and it's been less than 10 minutes since the last successful
+    poll, Bracket does not poll Salesforce--this is where Brackets saves you from costly REST
+    API usage.
   </Step>
   <Step title="Second Step">
-    If there are events reported by the pub/sub API, _or_ if it's been greater than 10 minutes since the last poll, Bracket polls Salesforce via REST API for all records modified or created since the last successful poll. We store these records in `unprocessedRecords`.
+    If there are events reported by the pub/sub API, _or_ if it's been greater than 10 minutes since the last poll, Bracket polls Salesforce via REST API for all records modified or created since the last successful poll. We store these records in `unprocessed_records`.
 
-    Consistent 10-minute polling intervals make sure any events missed by pub/sub are still ultimately synced.  
+    Consistent 10-minute polling intervals make sure any events missed by pub/sub are still ultimately synced.
   </Step>
   <Step title="Third Step">
-    Bracket reads records from the Postgres trigger log that have `status='unprocessed'` and queries records with the corresponding primary keys from the synced Postgres table. 
+    Bracket reads records from the Postgres trigger log that have `status='UNPROCESSED'` and queries records with the corresponding primary keys from the synced Postgres table.
   </Step>
   <Step title="Fourth Step">
-     Bracket writes Salesforce edits to Postgres. The record is then marked as `PROCESSED` or `ERRORED` in `unprocessedRecords`. If `ERRORED`, Bracket will try syncing the erroneous record at the next poll attempt.
+    Bracket writes Salesforce edits to Postgres. The record is then marked as `PROCESSED` or
+    `ERROR` in `unprocessed_records`. If `ERRORED`, Bracket will try syncing the erroneous
+    record at the next poll attempt only if a new change has been detected.
 
      If during a given sync period a corresponding Postgres record was also updated, Bracket will remove the record from the next step.
   </Step>
   <Step title="Fifth Step">
-     Bracket writes Postgres edits to Salesforce. For inserts, which don't yet have a Salesforce ID assigned, Bracket makes a "round trip" sync, which captures the newly-created SFID and updates the Postgres record with it.
+    Bracket writes Postgres edits to Salesforce. For inserts, which don't yet have a Salesforce
+    ID assigned, Bracket makes a "round trip", capturing the newly-created SFID in the insert
+    response and updating the Postgres record with it.
   </Step>
 </Steps>
 
