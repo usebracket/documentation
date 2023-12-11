@@ -1,0 +1,37 @@
+---
+title: "Salesforce API Reference"
+sidebarTitle: "API Reference"
+description: "How Bracket reads from and writes to Salesforce"
+---
+## Summary
+
+Bracket offers two methods of syncing data with Salesforce: polling and streaming. 
+
+Currently, polling is available by default on the [web app](https://app.usebracket.com/). Streaming is available through setup with the Bracket team. Reach out to eng@usebracket.com to request access. 
+
+Read more about how Bracket syncs under [polling]("/polling") and [streaming]("/streaming").
+
+## Polling
+
+Under polling, Bracket uses the Salesforce bulk API to seed and re-seed data. Otherwise, we ping the REST API at the cadence set in your sync. 
+
+For the different sync cadences, you can expect roughly the number of daily REST API requests below:
+
+| Cadence                                  | Requests                                                                                                                  |
+| --------------------------------      | --------------------------------------------------------------------------------------------------------------------------------- |
+| Every minute      |    1,440 - 2,160                                                                                                         |
+| Hourly    |            24                                                                                               |
+| Daily          |       1                                                           |
+
+## Streaming
+
+Under streaming, Bracket uses a combination of the Salesforce bulk API, REST API, and pub/sub API to detect and transact data changes. 
+
+Bracket uses the bulk API to seed and reseed data. We then use the pub/sub API to listen for events every 309 seconds, and make requests to the REST API when there's either an event to sync _or_ 10 minutes has passed since the last poll. 
+
+Here are the counts of REST API requests you can expect in a day with no changes vs. changes every second.
+
+| Number of changes in a day                                | Requests                                                                                                                  |
+| --------------------------------      | --------------------------------------------------------------------------------------------------------------------------------- |
+| None      |    144                                                                                                         |
+| Every second    |            2880                                                                                               |
