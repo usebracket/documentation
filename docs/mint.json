@@ -44,7 +44,7 @@
         "quickstart",
         {
           "group": "Sync methods",
-          "pages": ["polling"]
+          "pages": ["polling", "streaming"]
         }
       ]
     },
