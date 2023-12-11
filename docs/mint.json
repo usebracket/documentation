@@ -59,7 +59,7 @@
         "deletes",
         {
           "group": "Legacy app",
-          "pages": ["legacy_field_mapping"]
+          "pages": ["legacy_field_mapping, legacy_integrations"]
         }
       ]
     },
