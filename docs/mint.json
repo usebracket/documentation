@@ -41,7 +41,11 @@
       "group": "Introduction",
       "pages": [
         "introduction",
-        "quickstart"
+        "quickstart",
+        {
+          "group": "Sync methods",
+          "pages": ["polling"]
+        }
       ]
     },
     {

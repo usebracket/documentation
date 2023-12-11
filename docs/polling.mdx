@@ -1,0 +1,60 @@
+---
+title: 'Polling'
+description: 'How Bracket syncs using the polling method'
+---
+
+## Summary
+
+The polling sync method involves scheduled calls to a data source (via API, using SQL, etc), evaluating what records have been updated or inserted since the last sync, resolving merge conflicts, and syncing them to the opposing source. 
+
+By default, all Bracket syncs use the polling method to keep data in sync. This is because polling is 1) highly reliable and 2) data source-agnostic (i.e. not every data source supports streaming). 
+
+## The source of truth
+
+With the polling method, Bracket stores an encrypted copy of your data as an intermediate source of truth. We mostly do this to prevent infinite event loops, but it also helps with merge conflict resolution.
+
+We only store the most recent snapshot of the data, and only the fields that are synced via Bracket. 
+
+<Info>We are able to deploy the source of truth on-prem for users who require it. Just ping us at eng@usebracket.com!</Info>
+
+## The polling sync method, step-by-step
+
+<Steps>
+  <Step title="First Step">
+    Bracket reads records from the primary source that have been inserted or updated since the last sync, assuming there is a timestamp field that records when a record was created or updated. If not, Bracket reads all records.
+
+    For any new or updated records, we create a temporary mapping of primary key to record & metadata.
+  </Step>
+  <Step title="Second Step">
+    Bracket does the same for the secondary source.
+  </Step>
+  <Step title="Third Step">
+     Bracket compares primary source updates and inserts, standardized to a JSON, against the source of truth. If there are differences, Bracket prepares a payload for the secondary source. 
+
+     This if where we transform the data if necessary - e.g., transforming a Salesforce picklist value to a Postgres integer. We are shooting for any:any mapping between field types when possible. 
+
+     Bracket then writes the data to the secondary source and updates the source of truth accordingly. 
+     
+     After writing, we check that the record wasn't also in the temporary secondary source mapping from step 2. If it is, we remove it from the mapping such that the primary source edit is the only one propagated. This is how we handle merge conflicts, preferring the primary source.
+  </Step>
+  <Step title="Fourth Step">
+     Bracket does the same for the secondary source, except any records for which there was a primary source edit, since the primary source will win the merge conflict.
+  </Step>
+</Steps>
+
+## Polling API reference
+
+| Tool                                  | How we transact data                            | 
+| --------------------------------------| ---------------------------------------------- | 
+| [Postgres](/connecting/postgres_connecting)      | SQL                                           | 
+| [Salesforce](/connecting/salesforce_connecting)  | Bulk API (seeding) and REST API (polling)      | 
+| [Hubspot](/connecting/hubspot_connecting)      | REST API                                       | 
+| [Airtable](/connecting/airtable_connecting)      | REST API                                   | 
+| [Google Sheets](/connecting/gsheets_connecting)  | REST API                              | 
+| [MySQL](/connecting/mysql_connecting)  | SQL                                           |
+| [MongoDB](/database/mongodb_connecting)          | ???                                           | 
+| [Firestore](/database/firebase_connecting)       | ???                                           | 
+| [Snowflake](/database/snowflake_connecting)      | DDL                                           | 
+| [Notion](/connecting/notion_connecting)          | REST API                                       | 
+
+
