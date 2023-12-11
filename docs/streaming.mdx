@@ -52,7 +52,7 @@ At cadences as fast as every 30 seconds, Bracket performs the following:
 <Steps>
   <Step title="First Step">
     Bracket checks the Salesforce pub/sub API to see if any events have occurred since the last
-    successful data read/write. E.g., If the last change read by Bracket on your Salesforce
+    successful data read/write. E.g., if the last change read by Bracket on your Salesforce
     object was processed six minutes ago, Bracket will only check the pub/sub API for any events
     with a `commitTimestamp` greater than the last six minutes.
 

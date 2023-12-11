@@ -32,7 +32,7 @@ We only store the most recent snapshot of the data, and only the fields that are
   <Step title="Third Step">
      Bracket compares primary source updates and inserts, standardized to a JSON, against the source of truth. If there are differences, Bracket prepares a payload for the secondary source.
 
-     This if where we transform the data if necessary--e.g. transforming a Salesforce picklist
+     This if where we transform the data if necessary--e.g., transforming a Salesforce picklist
     value to a Postgres integer. We are shooting for any:any mapping between field types when possible.
 
     After writing, we check that the record wasn't also in the temporary secondary source mapping from step 2. If it is, we remove it from the mapping such that the primary source edit is the only one propagated. This is how we handle merge conflicts, preferring the primary source.
