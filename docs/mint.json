@@ -51,12 +51,12 @@
     {
       "group": "Guides",
       "pages": [
+        "deletes",
         "pkeys", 
         {
           "group": "Foreign Keys",
           "pages": ["foreign_keys"]
         }, 
-        "deletes",
         {
           "group": "Legacy app",
           "pages": ["legacy_field_mapping, legacy_integrations"]
