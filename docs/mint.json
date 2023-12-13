@@ -52,11 +52,11 @@
       "group": "Guides",
       "pages": [
         "deletes",
-        "pkeys", 
+        "pkeys",
         {
           "group": "Foreign Keys",
           "pages": ["foreign_keys"]
-        }, 
+        },
         {
           "group": "Legacy app",
           "pages": ["legacy_integrations", "legacy_field_mapping"]
