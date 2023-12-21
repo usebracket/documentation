@@ -1,0 +1,65 @@
+---
+title: 'Using an existing table with Bracket'
+sidebarTitle: "Using an existing table"
+description: "How to successfully design a Postgres table that meets Bracket's criteria"
+---
+
+<Note>While we recommend that you allow Bracket to build a table for you, here is a guide
+  for using a table that you've created yourself</Note>
+
+## General requirements
+
+1. A unique identifier (we recommend snake case field names), and our default table generation
+creates a field called `bracket_pkey`.
+
+2. To be able to insert into postgres, you must have a default value. We recommend using the
+builtin function `gen_random_uuid()`.
+
+3. In order to leverage the a more efficient polling mechanism where only recently
+updated/inserted records are polled, you must include a field that tracks when records were
+modified. When Bracket builds a base for you, we create a field called `bracket_last_modified`
+and add a trigger/function that updates that field's value whenever the record is updated.
+
+
+Here's some default SQL that can help you get started:
+
+<CodeGroup>
+
+  ```sql create_table.sql
+  CREATE TABLE IF NOT EXISTS schema_name.table_name (
+      bracket_pkey UUID DEFAULT gen_random_uuid() primary key,
+      bracket_last_modified TIMESTAMP DEFAULT NOW(),
+      created_date TIMESTAMP DEFAULT NOW(),
+      field_1 TEXT
+  );
+  ```
+
+
+  ```sql updated_timestamp_function.sql
+  create function bracket_update_timestamp() returns trigger
+      language plpgsql
+  as
+  $$
+        BEGIN
+          NEW.bracket_last_modified = NOW();
+          RETURN NEW;
+        END;
+        $$;
+  alter function bracket_update_timestamp() owner to postgres;
+
+  ```
+
+
+
+  ```sql updated_timestamp_trigger.sql
+  CREATE TRIGGER "update_bracket_last_modified_for_table_name"
+  BEFORE UPDATE ON schema_name.table_name
+  FOR EACH ROW EXECUTE FUNCTION bracket_update_timestamp();
+  ```
+
+</CodeGroup>
+
+## Event driven requirements
+
+
+Please see the requirements for the streaming sync methods [here](https://docs.usebracket.com/streaming)
