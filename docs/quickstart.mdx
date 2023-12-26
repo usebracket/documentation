@@ -27,12 +27,12 @@ On the web app, you'll need to enter certain connection details to get syncs run
 | Data source                                  | What you'll need                                                                                                                  |
 | --------------------------------      | --------------------------------------------------------------------------------------------------------------------------------- |
 | [Postgres](/connecting/postgres_connecting)      | Connection string URI                                                                                                             |
-| [Salesforce](/connecting/salesforce_connecting)    | Valid Salesforce account                                                                                                          |
+| [Salesforce](/connecting/salesforce_connecting)    | A valid Salesforce account                                                                                                          |
 | [Hubspot](/connecting/hubspot_connecting)          | A valid Hubspot account                                                                 |
 | [Airtable](/connecting/airtable_connecting)      | An existing Airtable base                                                                                                |
 | [MySQL](/connecting/mysql_connecting)      | Connection string URI                                                                                                |
 | [DynamoDB](/connecting/mongodb_dynamodb)          | Access key, secret access key, and region     |
-| [MongoDB](/connecting/mongodb_connecting)          | Connection string URI with Bracket as added user and whitelisting IP address 0.0.0.0/0 _or_ Bracket's dedicated IP addresses      |
+| [MongoDB](/connecting/mongodb_connecting)          | Connection string URI      |
 | [Google Sheets](/connecting/gsheets_connecting)  | An existing Google Sheet                                                                     |
 
 <Example>
@@ -44,7 +44,7 @@ On the web app, you'll need to enter certain connection details to get syncs run
 On this page, you can remove any fields that you do not want synced. While Bracket auto-maps
 fields based on field names, you can also adjust the mapping as needed.
 
-<Accordion icon={"lightbulb"} title="Optional: manual field mapping">
+<Accordion icon={"lightbulb"} title="Optional: Manually setting mapped fields">
   In the case that you have many fields that you want to modify (delete, add, edit etc), you can
   manually upload a field mapping in the following file format:
   <Snippet file="example_field_mapping.mdx" />
@@ -67,13 +67,15 @@ When you create your sync, your primary source will automatically seed the secon
 <Warning>If the secondary data source is already populated, the seed will fail. However, we strongly recommend clearing the secondary source before trying to run another sync job, otherwise you may duplicate data.</Warning>
 
 
-After that initial seed, to make sure the sync will work as expected, click "Test run," then refresh the page to see te result of the test.
+After that initial seed, to make sure the sync will work as expected, click "Test run," then
+refresh the page to see the result of the test.
 
 <Example>
   <img class="rounded-md w-full" src="/img/starting_test_run.gif" />
 </Example>
 
-Then, click "Run once" or toggle the sync to `Active` to begin the sync. Refresh the page to verify that a sync job has been planned.
+Then, click "Run once" or toggle the sync to `Active` to begin the sync. Refresh the page to
+verify that a sync job has been scheduled.
 
 <Example>
   <img class="rounded-md w-full" src="/img/starting_sfdc_sync.gif" />

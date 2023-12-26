@@ -6,21 +6,22 @@ description: "Follow these steps to properly set up your Google Sheet primary ke
 
 ## Summary
 
-To sync Google Sheets using Bracket, each sheet must have a primary field column that contains unique values. This can be as simple as an integer, or more complex like a UUIDV4.
+To sync Google Sheets using Bracket, each sheet must have a primary field column that contains
+unique values. This can be as simple as an integer, or more complex like a UUIDv4.
 
 <Warning>Empty values count as primary key values, which can lead to data mixing in two-way syncs! Be careful to ensure that the primary key field is never empty for any syncs that read from Google Sheets</Warning>
 
 ## How to set up your primary key
 
-For **one-way syncs that read from Google Sheets**, the primary key for any populated rows must have a static unique value. This value must never be changed, or data duplication can occur. 
+For **one-way syncs that read from Google Sheets**, the primary key for any populated rows must have a static unique value. This value must never be changed, or data duplication can occur.
 
-For **all other sync configurations**, the primary key must sync with a field in the opposing data source that is itself unique. 
+For **all other sync configurations**, the primary key must sync with a field in the opposing data source that is itself unique.
 
 <Info>For example, if you are syncing Postgres with G Sheets in a two-way sync, the G Sheet primary key should sync with the Postgres primary key field in the field mapping</Info>
 
 In summary:
 
-| Configuration | Primary key requirements |
---------------|--------------------------
-| One-way sync from G Sheets | Primary key must be a unique, unchanging value, and identified as the primary key during setup |
-| All other configurations | Primary key must be in the Bracket field mapping, must sync with a field of unique values in the op posing data source, and must be identified as the primary key during setup |
+| Configuration              | Primary key requirements                                                                                                                                                       |
+|----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| One-way sync from G Sheets | Primary key must be a unique, unchanging value, and identified as the primary key during setup                                                                                 |
+| All other configurations   | Primary key must be in the Bracket field mapping, must sync with a field of unique values in the op posing data source, and must be identified as the primary key during setup |

@@ -6,17 +6,21 @@ description: "Follow these steps to properly set up your Postgres primary key"
 
 ## Summary
 
-To maintain database integrity over time, we recommend that your Postgres table have an **independent** primary key - that is, your Postgres table should not take the primary key values from the opposing data source in the sync. 
+To maintain database integrity over time, we recommend that your Postgres table have an **independent** primary key - that is, your Postgres table should not take the primary key values from the opposing data source in the sync.
 
 ## How to set up your primary key
 
-Each Postgres table you sync with Bracket should have a primary key constraint, and the primary key should have a default value that is unique. We recommend using UUIDV4 primary keys, which you can automatically generate using the command below in your `create table` SQL statement.
+Each Postgres table you sync with Bracket should have a primary key constraint, and the primary
+key should have a default value that is unique. We recommend using UUIDv4 primary keys, which
+you can automatically generate using the command below in your `CREATE TABLE` SQL statement.
 
 ```SQL
-CREATE TABLE IF NOT EXISTS public.table
+CREATE TABLE IF NOT EXISTS public.my_table
     (pkey text COLLATE pg_catalog."default" NOT NULL DEFAULT uuid_generate_v4())
 ```
-This ensures that all newly added records, whether inserted directly to Postgres or synced from a paired data source, will adopt primary keys with uniform formatting and unique values. 
+This ensures that all newly added records, whether inserted directly to Postgres or synced from a paired data source, will adopt primary keys with uniform formatting and unique values.
 
-In the field mapping, you are able to sync the primary key to a field in the opposing data source for reference, but any edits made to the primary key in the opposing source will not sync back to Postgres.
+In the field mapping, you are able to sync the primary key to a field in the opposing data
+source for reference, but any edits made to the primary key in the opposing source will not sync
+back to Postgres in the polling sync method.
 
