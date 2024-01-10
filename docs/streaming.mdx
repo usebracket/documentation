@@ -23,7 +23,9 @@ This is the format of the `unprocessed_records` table:
 
 ### Salesforce
 
-1. Bracket must have a dedicated Salesforce account. This helps us separate valid user edits from changes synced by Bracket.
+1. Bracket must have [a dedicated Salesforce account with the correct permission](https://app.tango.us/app/workflow/How-to-create--Bracket--profile-for-enabling-Salesforce-pub-sup-API-a74249f28f5043a0b380fbcd94779dc6). This helps us
+separate
+valid user edits from changes synced by Bracket.
 2. Salesforce must be the primary source, meaning it will win any merge conflicts
 3. The synced Salesforce object must have a unique `Id` field. In most objects, this is automatic.
 
