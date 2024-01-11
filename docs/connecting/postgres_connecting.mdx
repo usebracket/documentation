@@ -24,6 +24,25 @@ postgresql://[user[:password]@][host][:port][,...][/database][?param1=value1&...
 
 2. Enter the details above to the web app at app.usebracket.com
 
+<Accordion icon={"lightbulb"} title="Optional: Connecting via SSH">
+  In the case that your postgres database is not accessible to the public, bracket can
+  connect to your database through a bastion host/jump box, using SSH tunneling to
+  connect. Follow these steps to ensure a successful connection:
+
+  1. Click on the "Create SSH tunnel" button on the postgres connection details page,
+  after you've entered the primary details for your postgres.
+  <img src="/img/ssh-tunnel-button.png" />
+  2. Enter in the jump box and destination host connection details.
+  3. You will then be provided with an ed25519 key pair. You can either copy the text or
+  download the key. Keep in mind that this key is unique to this connection and will not be
+  shown again. Once you've saved this information, you can close the modal window by clicking
+  "Done".
+  4. Enter that public key to your `~/.ssh/authorized_keys` file in your jump box. We recommend
+  adding a comment like "bracket" after the key to keep your keys organized.
+  5. After saving the `~/.ssh/authorized_keys` file with the , click "Next" on the bracket
+  postgres connection details and bracket will notify you if the connection was successful!
+</Accordion>
+
 ## Assigning user permissions
 
 For Bracket to be able to be able to generate Postgres tables from other primary sources, we require the following permissions, which can be assigned via SQL.
