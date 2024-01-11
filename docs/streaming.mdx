@@ -32,13 +32,11 @@ valid user edits from changes synced by Bracket.
 ### Postgres
 
 1. There must be a separate schema called `bracket_audit`. This is where Bracket will store the trigger log table, which contains a history of Postgres events.
-```sql Create user statement
+```sql Create schema statement
 CREATE SCHEMA IF NOT EXISTS bracket_audit;
 ```
 2. Bracket must have a dedicated Postgres user with the permissions below:
 ```sql Create user statement
-CREATE SCHEMA IF NOT EXISTS bracket_audit;
-
 CREATE USER bracket WITH PASSWORD '<any_safe_password>';
 GRANT CONNECT, CREATE ON DATABASE <postgres> TO bracket;
 GRANT USAGE, CREATE ON SCHEMA bracket_audit TO bracket;
