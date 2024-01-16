@@ -51,16 +51,17 @@
     {
       "group": "Guides",
       "pages": [
-        "deletes",
-        "pkeys",
+        "guides/deletes",
         {
           "group": "Foreign Keys",
-          "pages": ["foreign_keys"]
+          "pages": ["guides/foreign_keys"]
         },
         {
-          "group": "Legacy app",
-          "pages": ["legacy_integrations", "legacy_field_mapping"]
-        }
+          "group": "Legacy App",
+          "pages": ["guides/legacy_integrations", "guides/legacy_field_mapping"]
+        },
+        "guides/pkeys",
+        "guides/runs"
       ]
     },
     {

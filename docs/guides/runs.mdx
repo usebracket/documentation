@@ -1,0 +1,42 @@
+---
+title: 'Runs'
+description: 'How Bracket executes individual instances of syncs'
+---
+
+## Summary
+
+Bracket uses a scheduler to execute a sync. Each execution of a sync is called  `run`. A history
+of all the runs is kept on the sync's page.
+
+## Types
+
+Each run is designated a `type`. Each type of run has special properties and will execute
+differently:
+
+| Type       | Summary                                                                                                                                                                                                                                               |
+|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `SYNC`     | The standard sync that is run at the cadence of your sync frequency when your sync is active                                                                                                                                                          |
+| `ONE_TIME` | A single execution of a run that will write any changes to the respective sources but will not be automatically scheduled                                                                                                                             |
+| `TEST`     | A single execution of a run that will NOT write any changes to opposite sources. This run type is used to ensure your configuration is capture changes correctly.                                                                                     |
+| `SEED`     | A single execution of a run that writes all the data from the primary data source to the secondary. This is run right after the sync creation and at a Reseed where the secondary data source is cleared before the primary data source is reinserted |
+
+## Statuses
+
+Each run takes time to be get scheduled and executed. The various statuses of the run are as
+follows:
+
+| Status           | Summary                                                                                                                                                                                                                          |
+|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `SCHEDULED`      | The state for runs that are will be executed at a future time. This run has not been started and will be deleted if the run type is `SYNC` sync is toggled to inactive.                                                          |
+| `STARTING`       | A short lived state where our scheduler has picked up this execution but has not begun processing individual records.                                                                                                            |
+| `STARTED`        | The state for a currently running run. Runs can take anywhere from a few seconds to an hour and the majority of the time, the run is in this state before it is completed.                                                       |
+| `SUCCESS`        | A completed state which will successfully trigger a subsequent run.                                                                                                                                                              |
+| `FAIL`           | A completed state which indiciates some error in syncing. Often times the error threshold has been passed and the user will have to manually restart the sync to active.                                                         |
+| `SOURCE_FAILURE` | A completed state which specifically indicates that our systems failed to connect to your database. This can be for various reasons from IP restrictions to API service failures. This error type will be automatically retried. |
+
+## Recommendations
+
+When it comes to an order of operations, Bracket recommends running a `TEST` run to ensure that
+the right number of changes is being sent to each data source followed by a `ONE_TIME` run. To
+ensure changes aren't creating an infinite loop of changes, Bracket recommending running one more
+`TEST` run before turning the sync to active which infinitely scheduling the `SYNC` runs
